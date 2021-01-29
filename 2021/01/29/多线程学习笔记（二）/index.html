@@ -262,6 +262,25 @@
 <li><p><code>future</code>：认为提供了一种访问异步操作结果的机制，即此线程的结果可能无法立马获得，在此线程执行完毕时才能获得结果，<code>future</code>对象中会保存一个值。</p>
 </li>
 </ul>
+<p>示例代码：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">mythread</span><span class="params">()</span> <span class="comment">//线程入口函数</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;mythread() start&quot;</span> &lt;&lt; <span class="string">&quot;threadid = &quot;</span> &lt;&lt; <span class="built_in">std</span>::this_thread::get_id() &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">std</span>::<span class="function">chrono::milliseconds <span class="title">dura</span><span class="params">(<span class="number">5000</span>)</span></span>; <span class="comment">//定一个5秒的时间</span></span><br><span class="line">    <span class="built_in">std</span>::this_thread::sleep_for(dura);</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;mythread() end&quot;</span> &lt;&lt; <span class="string">&quot;threadid&quot;</span> &lt;&lt; <span class="built_in">std</span>::this_thread::get_id() &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">5</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> <span class="comment">//主函数</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;main&quot;</span> &lt;&lt; <span class="string">&quot;threadid =&quot;</span> &lt;&lt; <span class="built_in">std</span>::this_thread::get_id() &lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">future</span>&lt;<span class="keyword">int</span>&gt; result = <span class="built_in">std</span>::async(mythread);</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;continue....&quot;</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">int</span> def;</span><br><span class="line">    def = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; result.get() &lt;&lt; <span class="built_in">endl</span>; <span class="comment">//卡在这里等待mythread()执行完毕，拿到结果</span></span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;I love China!&quot;</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p><code>get()</code>函数不拿到值不会向下执行，将阻塞在这里等待；此函数只能调用一次，调用多次将会产生异常</p>
+</li>
+<li><p><code>wait()</code>函数类似于线程的<code>join()</code>函数，等待线程函数返回，本身不返回结果</p>
+</li>
+<li><p>而其实，不用上述两个函数，这样生成的线程也会在主线程结束前执行完毕，但是无法解释原因，使用时需要注意</p>
+</li>
+</ul>
+<hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"> &#96;&#96;&#96;c++</span><br><span class="line">A a;</span><br><span class="line">int tmppar &#x3D; 12;</span><br><span class="line">std::future&lt;int&gt; result &#x3D; std::async(&amp;A::mythread, &amp;a, tmppar);</span><br><span class="line">&#x2F;&#x2F;第二个参数是对象引用，才能保证线程里用的是同一个对象</span><br></pre></td></tr></table></figure>
+<ul>
+<li>我们通过额外向<code>std::async()</code>传递一个参数，该参数类型是<code>std::launch</code>类型（枚举类型），来达到一些特殊的目的<ul>
+<li><code>std::launch::deferred</code>：表示线程入口函数调用被延迟到<code>std::future</code>的<code>wait()</code>或者<code>get()</code>函数调用时才执行；如果以上两个函数没有被调用，线程根本未被执行</li>
+<li></li>
+</ul>
+</li>
+</ul>
 
         </div>
 
