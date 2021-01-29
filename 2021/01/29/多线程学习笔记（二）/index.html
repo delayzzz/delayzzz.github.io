@@ -236,15 +236,32 @@
 <ul>
 <li>如果第二个参数<code>lambda</code>表达式返回值是<code>true</code>，那么直接函数返回，代码向下执行</li>
 <li>如果第二个参数<code>lambda</code>表达式返回值是<code>false</code>，那么将解锁互斥量，并堵塞到本行，直到其他某个线程调用<code>notify_one()</code>成员函数为止</li>
-<li>如果<code>wait()</code>没有第二个参数：<code>my_cond.wait(sbbguard1)</code>。那么就跟第二个参数<code>lambda</code>表达式返回<code>false</code>效果一样</li>
+<li>如果<code>wait()</code>没有第二个参数：<code>my_cond.wait(sbguard1)</code>。那么就跟第二个参数<code>lambda</code>表达式返回<code>false</code>效果一样，<strong>但如果被唤醒后，就会直接拿锁后，返回<code>true</code>并向下执行</strong></li>
 </ul>
+</li>
+<li><p>当其他线程用<code>notify_one()</code>将本<code>wait()</code>（原来是睡眠状态）唤醒后，<code>wait()</code>将<strong>开始不断尝试重新获取互斥量锁</strong>，如果获取不到，那么流程就卡在<code>wait()</code>这里不断等待获取。获取到互斥量锁后，将再一次的判断<code>wait()</code>函数中的<code>labmda</code>表达式，根据返回结果重复上一条的流程（即可能仍然进入睡眠状态..）</p>
 </li>
 <li><p>等待玩家指令并执行的线程代码，修改如下</p>
 </li>
 </ul>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">std</span>::condition_variable my_cond;<span class="comment">//生成一个条件变量对象</span></span><br><span class="line">...</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">outMsgRecvQueue</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> command = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(<span class="literal">true</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="function"><span class="built_in">std</span>::unique_lock&lt;<span class="built_in">std</span>::mutex&gt; <span class="title">sbguard1</span><span class="params">(my_muyex1)</span></span>;</span><br><span class="line">        my_cond.wait(sbguard1, [<span class="keyword">this</span>] &#123; <span class="comment">//一个lambda表达式就是一个可调用对象（函数）</span></span><br><span class="line">            <span class="keyword">if</span>(!msgRecvQueue.empty())</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;);</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">std</span>::condition_variable my_cond;<span class="comment">//生成一个条件变量对象</span></span><br><span class="line">...</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">outMsgRecvQueue</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> command = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(<span class="literal">true</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="function"><span class="built_in">std</span>::unique_lock&lt;<span class="built_in">std</span>::mutex&gt; <span class="title">sbguard1</span><span class="params">(my_muyex1)</span></span>;</span><br><span class="line">        my_cond.wait(sbguard1, [<span class="keyword">this</span>] &#123; <span class="comment">//一个lambda表达式就是一个可调用对象（函数）</span></span><br><span class="line">            <span class="keyword">if</span>(!msgRecvQueue.empty())</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;);</span><br><span class="line">        <span class="comment">//流程只要能走到这里，此线程必然拿到了互斥量的锁头</span></span><br><span class="line">        command = msgRecvQueue.front();</span><br><span class="line">        msgRecvQueue.pop_front();</span><br><span class="line">        sbguard1.unlock();<span class="comment">//因为unique_lock的灵活性，所以可以随时的unlock()解锁，以免锁住太长时间</span></span><br><span class="line">        </span><br><span class="line">        <span class="comment">//假如正在处理其他事物，需要一段时间，而不是正卡在wait()睡眠状态等待被唤醒，那么此时notify_one()就没有效果</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="2-notify-all"><a href="#2-notify-all" class="headerlink" title="(2)notify_all()"></a>(2)<code>notify_all()</code></h2><ul>
+<li><p><code>notify_one()</code>：一次通知、唤醒一个线程</p>
+</li>
+<li><p><code>notify_all()</code>：一次通知、唤醒多个线程</p>
+</li>
+</ul>
+<h1 id="第九节-async，future，packaged-task，promise"><a href="#第九节-async，future，packaged-task，promise" class="headerlink" title="第九节 async，future，packaged_task，promise"></a>第九节 <code>async</code>，<code>future</code>，<code>packaged_task</code>，<code>promise</code></h1><h2 id="1-std-async、std-future创建后台任务并返回值"><a href="#1-std-async、std-future创建后台任务并返回值" class="headerlink" title="(1)std::async、std::future创建后台任务并返回值"></a>(1)<code>std::async</code>、<code>std::future</code>创建后台任务并返回值</h2><blockquote>
+<p>希望线程返回一个结果</p>
+</blockquote>
+<ul>
+<li><p><code>std::async</code>是一个函数模板，用来启动一个异步任务，启动之后返回一个<code>std::future</code>对象，<code>std::future</code>对象中含有线程入口函数返回的结果（线程返回的结果）。可以通过<code>future</code>对象的成员函数<code>get()</code>来获取结果</p>
+</li>
+<li><p>什么叫“<u>启动一个异步任务</u>”？即自动创建一个线程，并开始执行对应的线程入口函数</p>
+</li>
+<li><p><code>future</code>：认为提供了一种访问异步操作结果的机制，即此线程的结果可能无法立马获得，在此线程执行完毕时才能获得结果，<code>future</code>对象中会保存一个值。</p>
+</li>
+</ul>
 
         </div>
 
