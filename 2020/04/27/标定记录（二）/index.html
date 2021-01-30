@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="ZHANG YANCHI">
+
+
+
+
+
+<title>标定记录（二） | Delayzzz&#39;s blog</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 5.3.0"></head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">Delayzyc&#39;s Private Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">Delayzyc&#39;s Private Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">标定记录（二）</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">ZHANG YANCHI</a>
+                    
+                    
+                        <span class="post-time">
+                        Date: <a href="#">April 27, 2020&nbsp;&nbsp;8:24:59</a>
+                        </span>
+                    
+
+			<span id="/2020/04/27/%E6%A0%87%E5%AE%9A%E8%AE%B0%E5%BD%95%EF%BC%88%E4%BA%8C%EF%BC%89/" class="leancloud-visitors view" data-flag-title="标定记录（二）">
+			  <em class="post-meta-item-text">Pageviews:</em>
+			  <i class="leancloud-visitors-count">loading</i>
+			</span>
+
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/ROBOCON2020/">ROBOCON2020</a>
+                            
+                        </span>
+                    
+            	    
+		    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <font face = 'Times New Roman'>
+
+<h3 id="2020-4-27"><a href="#2020-4-27" class="headerlink" title="2020.4.27"></a>2020.4.27</h3><hr>
+<h3 id="陀螺仪问题解决"><a href="#陀螺仪问题解决" class="headerlink" title="陀螺仪问题解决"></a>陀螺仪问题解决</h3><hr>
+<p>先做线（杜邦线），用2s锂电池单独给陀螺仪供电后问题解决</p>
+<ul>
+<li>每次转一圈的数据比较稳定，每转1080°陀螺仪若干数据之间的差不超过20</li>
+</ul>
+<h3 id="再次标定"><a href="#再次标定" class="headerlink" title="再次标定"></a>再次标定</h3><hr>
+<ul>
+<li><p>由于陀螺仪数据稳定，需要再次标定，标定后角度经验证比较准确：</p>
+<ul>
+<li>每转三圈读取的角度值在1080°±3°之间浮动</li>
+</ul>
+</li>
+<li><p>角度标准不同后，还需要整体重新标定，结果图示如下：</p>
+<ul>
+<li><p>验证<strong>正y轴</strong>：</p>
+<ul>
+<li>y方向行进约 1300 mm，x方向偏移量约为 0.7 mm</li>
+</ul>
+<p><img src="/../images/0427/1.png"></p>
+</li>
+<li><p>验证<strong>假x轴</strong>：</p>
+<ul>
+<li>x方向行进约 1400 mm，y方向偏移量约为 10 mm</li>
+</ul>
+<p><img src="/../images/0427/2.png"></p>
+</li>
+<li><p>验证<strong>正y轴转为假x轴后沿正y轴走</strong>：</p>
+<ul>
+<li>这里最终x方向偏移量约 4 mm</li>
+</ul>
+<p><img src="/../images/0427/3.png"></p>
+</li>
+</ul>
+</li>
+<li><p>根据上图走<strong>假x轴</strong>的x、y位移数据   acrtan（10.04 / 1373）= 0.4189653°</p>
+</li>
+</ul>
+<p>​       又推车转角为 89.5257507°</p>
+<blockquote>
+<p>89.5257507° + 0.4189653° = 89.944716° ≈ 90°</p>
+</blockquote>
+<p>​       在这里再次验证了之前的结论</p>
+<h3 id="重复性误差"><a href="#重复性误差" class="headerlink" title="重复性误差"></a>重复性误差</h3><hr>
+<ul>
+<li>在这里我推车测试了8条不同的路径（左下角到右上角），并且把每条路径最终的x、y坐标都列了出来，横线代表8个值的平均值，由于条件有限无法知道精确的实际值，所以把平均值当作实际值。</li>
+</ul>
+<p><img src="/../images/0427/4.png"></p>
+<ul>
+<li>结果发现，在推车直线距离大概 1.5 m的情况下，<strong>小车在x、y方向都可能存在5mm内的偏移</strong></li>
+</ul>
+<h3 id="旋转误差"><a href="#旋转误差" class="headerlink" title="旋转误差"></a>旋转误差</h3><hr>
+<ul>
+<li>这里每次旋转 3 - 4 圈后回到起始点，来观察小车的定位误差情况</li>
+</ul>
+<p><img src="/../images/0427/5.png"></p>
+<p><img src="/../images/0427/6.png"></p>
+<ul>
+<li>顺逆时针都测试了，发现顺时针坐标整体偏移了 5 mm，然而逆时针坐标整体偏移了约 20 mm</li>
+</ul>
+<h3 id="为何会有偏移？"><a href="#为何会有偏移？" class="headerlink" title="为何会有偏移？"></a>为何会有偏移？</h3><hr>
+<ol>
+<li><p>由上图可以发现转三圈的角度值都是1080°左右，说明陀螺仪提供的<strong>角度数据没有问题</strong></p>
+</li>
+<li><p><em>旋转算法matlab程序实现是否有问题？</em></p>
+<ul>
+<li><p>我把程序中 alpha 和 L 的值都设为 0，再次转3圈看结果：</p>
+<p>结论是<strong>与旋转算法无关</strong>，<strong>测试结果照样有十几到二十多毫米的偏移</strong></p>
+</li>
+</ul>
+</li>
+</ol>
+<p><img src="/../images/0427/7.png"></p>
+<p><img src="/../images/0427/8.png"></p>
+<p>（这里发现路径图中由于是随动中心，会绕中心转圈，是对的，之前是车的中心，所以路径图比较奇怪）</p>
+<ol start="3">
+<li><p><em>直行算法matlab程序实现是否有问题？**（由于在家标定时旋转角度方向变了，我改了一部分matlab代码，所以怀疑是不是这个有问题）</em></p>
+<ul>
+<li>我把之前 Adams 的仿真理想数据带入现在的matlab程序，并且在程序里再次分别验证走正y轴，假x轴：正y轴的x方向偏移 0 mm；正x轴的y方向偏移 1.2 mm <strong>比较理想，证明程序无误</strong></li>
+</ul>
+</li>
+<li><p>综上，那就意味之标定的系数（8个）还是不准，那就再小心的标定一次</p>
+</li>
+</ol>
+<h3 id="再再次标定"><a href="#再再次标定" class="headerlink" title="再再次标定"></a>再再次标定</h3><hr>
+<ul>
+<li><p>这次标定不一样，电脑不用放在车上了，标定也用蓝牙传数据（这周第一次整体标定电脑还是放在车上的）；并且，走一个方向多次重复取平均值。</p>
+</li>
+<li><p>这一次标定效果如下：</p>
+<ul>
+<li><p>验证<strong>正y轴</strong>：</p>
+<ul>
+<li>y方向行进约 1400 mm，x方向偏移量约为 0.25 mm</li>
+</ul>
+<p><img src="/../images/0427/9.png"></p>
+</li>
+<li><p>验证<strong>假x轴</strong>：（这次两边测得正好是90°，没办法每次都测的不一样，这个车有一边有问题）</p>
+<ul>
+<li>x方向行进约 1400 mm，y方向偏移量约为 1.293 mm</li>
+</ul>
+<p><img src="/../images/0427/10.png"></p>
+</li>
+<li><p>验证<strong>正y轴转为假x轴后沿正y轴走</strong>：</p>
+<ul>
+<li>这里最终x方向偏移量约 4 mm，和这周第一次标定的效果</li>
+</ul>
+<p><img src="/../images/0427/11.png"></p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="再次看看旋转的误差大小"><a href="#再次看看旋转的误差大小" class="headerlink" title="再次看看旋转的误差大小"></a>再次看看旋转的误差大小</h4><p><img src="/../images/0427/12.png"></p>
+<ul>
+<li>旋转三圈回到起始点，依然会有 10 - 20 mm的坐标偏移</li>
+</ul>
+<h3 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h3><hr>
+<p>&emsp;&emsp;考虑到标定时的车身的振动，旋转时车身的振动，自身操作使随动轮前后小幅度摇摆造成回程差等等的条件受到限制。</p>
+<p>&emsp;&emsp;这一套系统的精度目前看来就是上述的研究结果。</p>
+</font>
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>ZHANG YANCHI</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="http://example.com/2020/04/27/%E6%A0%87%E5%AE%9A%E8%AE%B0%E5%BD%95%EF%BC%88%E4%BA%8C%EF%BC%89/">http://example.com/2020/04/27/%E6%A0%87%E5%AE%9A%E8%AE%B0%E5%BD%95%EF%BC%88%E4%BA%8C%EF%BC%89/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>Do you believe in <strong>DESTINY</strong>?</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/ROBOCON2020/"># ROBOCON2020</a>
+                    
+                        <a href="/tags/%E5%AE%9A%E4%BD%8D%E7%AE%97%E6%B3%95/"># 定位算法</a>
+                    
+                        <a href="/tags/record/"># record</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2021/01/27/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/">多线程学习笔记（一）</a>
+            
+            
+            <a class="next" rel="next" href="/2020/04/14/%E5%9F%BA%E4%BA%8Ematlab%E7%9A%84%E8%93%9D%E7%89%99%E4%B8%B2%E5%8F%A3%E9%80%9A%E4%BF%A1/">基于matlab的蓝牙串口通信</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+
+
+    <section id="comments" class="comments">
+      <style>
+        .comments{margin:30px;padding:10px;background:#fff}
+        @media screen and (max-width:100px){.comments{margin:100px;padding:10px;background:#fff}}
+      </style>
+      <div class="valine_comment"></div>
+<!--载入js，在</body>之前插入即可-->
+<!--Leancloud 操作库:-->
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<!--Valine 的核心代码库-->
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+  new Valine({
+      el: '.valine_comment',
+      app_id: 'TPQWn5RsCkS2c8OwbgXhJ6CP-gzGzoHsz',
+      app_key: 'f1r3TAkLX0L1DJd7nS2KFVo9',
+      placeholder: 'plz command here..',
+      notify: 'true',
+      verify: 'true',
+    });
+</script>
+
+    </section>
+
+
+
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© ZHANG YANCHI | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>
