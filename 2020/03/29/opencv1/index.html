@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="ZHANG YANCHI">
+
+
+
+
+
+<title>python 之 opencv-简单读取操作 | Delayzzz&#39;s blog</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 5.3.0"></head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">Delayzyc&#39;s Private Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">Delayzyc&#39;s Private Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">python 之 opencv-简单读取操作</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">ZHANG YANCHI</a>
+                    
+                    
+                        <span class="post-time">
+                        Date: <a href="#">March 29, 2020&nbsp;&nbsp;18:08:03</a>
+                        </span>
+                    
+
+			<span id="/2020/03/29/opencv1/" class="leancloud-visitors view" data-flag-title="python 之 opencv-简单读取操作">
+			  <em class="post-meta-item-text">Pageviews:</em>
+			  <i class="leancloud-visitors-count">loading</i>
+			</span>
+
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/Image-Processing/">Image Processing</a>
+                            
+                        </span>
+                    
+            	    
+		    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <font face='Times New Roman'>
+
+<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>这几天看了很多关于图像处理的知识，知道神经网络是怎么回事，深度学习是什么东西，机器学习和他们有什么联系，又看了python语言下如何进行图像处理。我认为在接受更高层次的处理手段和算法设计前，应该打好基础，python的图像处理，学好PIL库和opencv库，我在github上找了个opencv的教程，接下来就是对opencv重点的一些备注</p>
+<hr>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><hr>
+<blockquote>
+<p><code>pip install opencv-python</code></p>
+</blockquote>
+<ul>
+<li>安装测试</li>
+</ul>
+<blockquote>
+<p><code>python --version</code><br><code>import cv2</code>&emsp; or&emsp; <code>print(cv2.__version__)  # &#39;3.4.1&#39;</code></p>
+</blockquote>
+<hr>
+<h3 id="使用清华镜像在python中pip安装"><a href="#使用清华镜像在python中pip安装" class="headerlink" title="使用清华镜像在python中pip安装"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_34130389/article/details/94510529">使用清华镜像在python中pip安装</a></h3><hr>
+<ul>
+<li>临时使用：</li>
+</ul>
+<p>可以在使用pip的时候加参数-i <a target="_blank" rel="noopener" href="https://pypi.tuna.tsinghua.edu.cn/simple">https://pypi.tuna.tsinghua.edu.cn/simple</a></p>
+<p>例如：pip install -i <a target="_blank" rel="noopener" href="https://pypi.tuna.tsinghua.edu.cn/simple">https://pypi.tuna.tsinghua.edu.cn/simple</a> gevent，这样就会从清华这边的镜像去安装gevent库。</p>
+<hr>
+<h3 id="opencv入门"><a href="#opencv入门" class="headerlink" title="opencv入门"></a>opencv入门</h3><hr>
+<ul>
+<li>OpenCV中彩色图是以__B-G-R__通道顺序存储的，灰度图只有一个通道</li>
+<li>图像坐标的起始点是在__左上角__，所以行对应的是y，列对应的是x</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"></span><br><span class="line"><span class="comment"># 开始计时</span></span><br><span class="line">start = cv2.getTickCount()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 读入一张图片</span></span><br><span class="line">img = cv2.imread(<span class="string">&#x27;lena.jpg&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 停止计时</span></span><br><span class="line">end = cv2.getTickCount()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 单位：s</span></span><br><span class="line">print((end - start) / cv2.getTickFrequency())</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="cv2-imread"><a href="#cv2-imread" class="headerlink" title="cv2.imread"></a><strong>cv2.imread</strong></h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"></span><br><span class="line"><span class="comment"># 加载灰度图</span></span><br><span class="line">img = cv2.imread(<span class="string">&#x27;lena.jpg&#x27;</span>, <span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>参数1：图片的文件名</p>
+<ul>
+<li>如果图片放在当前文件夹下，直接写文件名就行了，如’lena.jpg’</li>
+<li>否则需要给出绝对路径，如’D:\OpenCVSamples\lena.jpg’</li>
+</ul>
+</li>
+<li><p>参数2：读入方式，省略即采用默认值</p>
+<ul>
+<li><code>cv2.IMREAD_COLOR</code>：彩色图，默认值(1)</li>
+<li><code>cv2.IMREAD_GRAYSCALE</code>：灰度图(0)</li>
+<li><code>cv2.IMREAD_UNCHANGED</code>：包含透明通道的彩色图(-1)</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>经验之谈：路径中不能有中文噢，并且没有加载成功的话是不会报错的，<code>print(img)</code>的结果为None，后面处理才会报错，算是个小坑。</p>
+</blockquote>
+<hr>
+<h4 id="cv2-imshow-、-cv2-waitKey"><a href="#cv2-imshow-、-cv2-waitKey" class="headerlink" title="cv2.imshow__、__cv2.waitKey"></a><strong>cv2.imshow__、__cv2.waitKey</strong></h4><hr>
+<p>使用<code>cv2.imshow()</code>显示图片，窗口会自适应图片的大小：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cv2.imshow(<span class="string">&#x27;lena&#x27;</span>, img)</span><br><span class="line">cv2.waitKey(<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+<p>参数1是窗口的名字，参数2是要显示的图片。不同窗口之间用窗口名区分，所以窗口名相同就表示是同一个窗口</p>
+<hr>
+<p><code>cv2.waitKey()</code>是让程序暂停的意思，参数是等待时间（毫秒ms）。时间一到，会继续执行接下来的程序，传入0的话表示一直等待。等待期间也可以获取用户的按键输入：<code>k = cv2.waitKey(0)</code></p>
+<hr>
+<h4 id="cv2-namedWindow"><a href="#cv2-namedWindow" class="headerlink" title="cv2.namedWindow"></a><strong>cv2.namedWindow</strong></h4><hr>
+<p>我们也可以先用<code>cv2.namedWindow()</code>创建一个窗口，之后再显示图片：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 先定义窗口，后显示图片</span></span><br><span class="line">cv2.namedWindow(<span class="string">&#x27;lena2&#x27;</span>, cv2.WINDOW_NORMAL)</span><br><span class="line">cv2.imshow(<span class="string">&#x27;lena2&#x27;</span>, img)</span><br><span class="line">cv2.waitKey(<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+<p>参数1依旧是窗口的名字，参数2默认是<code>cv2.WINDOW_AUTOSIZE</code>，表示窗口大小自适应图片，也可以设置为<code>cv2.WINDOW_NORMAL</code>，表示窗口大小可调整。图片比较大的时候，可以考虑用后者。</p>
+<hr>
+<h4 id="cv2-imwrite"><a href="#cv2-imwrite" class="headerlink" title="cv2.imwrite"></a><strong>cv2.imwrite</strong></h4><hr>
+<p>使用<code>cv2.imwrite()</code>保存图片，参数1是包含后缀名的文件名：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cv2.imwrite(<span class="string">&#x27;lena_gray.jpg&#x27;</span>, img)</span><br></pre></td></tr></table></figure>
+
+<h2 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h2><ul>
+<li>打开lena.jpg并显示，s如果按下’s’，就保存图片为’lena_save.bmp’，否则就结束程序</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"></span><br><span class="line">img = cv2.imread(<span class="string">&#x27;lena.jpg&#x27;</span>)</span><br><span class="line">cv2.imshow(<span class="string">&#x27;lena&#x27;</span>, img)</span><br><span class="line"></span><br><span class="line">k = cv2.waitKey(<span class="number">0</span>)</span><br><span class="line"><span class="comment"># ord()用来获取某个字符的编码</span></span><br><span class="line"><span class="keyword">if</span> k == <span class="built_in">ord</span>(<span class="string">&#x27;s&#x27;</span>):</span><br><span class="line">    cv2.imwrite(<span class="string">&#x27;lena_save.bmp&#x27;</span>, img)</span><br></pre></td></tr></table></figure>
+</font>
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>ZHANG YANCHI</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="http://example.com/2020/03/29/opencv1/">http://example.com/2020/03/29/opencv1/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>Do you believe in <strong>DESTINY</strong>?</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/python/"># python</a>
+                    
+                        <a href="/tags/opencv/"># opencv</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2020/03/30/opencv2/">python 之 opencv-matplotlib显示图片</a>
+            
+            
+            <a class="next" rel="next" href="/2020/03/28/Ielts-3/">Ielts小班课学习-3</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+
+
+    <section id="comments" class="comments">
+      <style>
+        .comments{margin:30px;padding:10px;background:#fff}
+        @media screen and (max-width:100px){.comments{margin:100px;padding:10px;background:#fff}}
+      </style>
+      <div class="valine_comment"></div>
+<!--载入js，在</body>之前插入即可-->
+<!--Leancloud 操作库:-->
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<!--Valine 的核心代码库-->
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+  new Valine({
+      el: '.valine_comment',
+      app_id: 'TPQWn5RsCkS2c8OwbgXhJ6CP-gzGzoHsz',
+      app_key: 'f1r3TAkLX0L1DJd7nS2KFVo9',
+      placeholder: 'plz command here..',
+      notify: 'true',
+      verify: 'true',
+    });
+</script>
+
+    </section>
+
+
+
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© ZHANG YANCHI | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>

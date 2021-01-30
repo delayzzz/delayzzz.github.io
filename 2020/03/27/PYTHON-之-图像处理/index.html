@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="ZHANG YANCHI">
+
+
+
+
+
+<title>pillow初识、format格式化、绝对相对路径说明 | Delayzzz&#39;s blog</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 5.3.0"></head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">Delayzyc&#39;s Private Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">Delayzyc&#39;s Private Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">pillow初识、format格式化、绝对相对路径说明</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">ZHANG YANCHI</a>
+                    
+                    
+                        <span class="post-time">
+                        Date: <a href="#">March 27, 2020&nbsp;&nbsp;22:03:57</a>
+                        </span>
+                    
+
+			<span id="/2020/03/27/PYTHON-%E4%B9%8B-%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/" class="leancloud-visitors view" data-flag-title="pillow初识、format格式化、绝对相对路径说明">
+			  <em class="post-meta-item-text">Pageviews:</em>
+			  <i class="leancloud-visitors-count">loading</i>
+			</span>
+
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/Image-Processing/">Image Processing</a>
+                            
+                        </span>
+                    
+            	    
+		    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <font face="Times New Roman">
+
+<blockquote>
+<p>python -m -pip install –upgrade pip   #升级python的pip</p>
+</blockquote>
+<blockquote>
+<p>pip install pillow   #安装pillow库</p>
+</blockquote>
+<blockquote>
+<p>pip install django-simple-captcha    #安装captcha库</p>
+</blockquote>
+<blockquote>
+<p>pip install opencv-python   #安装opencv库</p>
+</blockquote>
+<blockquote>
+<p>pip install matplotlib    #安装matplotlib库</p>
+</blockquote>
+<hr>
+<p><a target="_blank" rel="noopener" href="https://www.php.cn/python-tutorials-372980.html">pillow的小程度基本入门</a></p>
+<ul>
+<li>可以对图像进行简单的读取、生成、裁剪、缩放、复制、翻转、旋转、粘贴、拉伸</li>
+<li>图像的模糊、边缘增强、锐利、平滑等常见操作</li>
+<li>在图像中加入文本，将图片变色</li>
+</ul>
+<hr>
+<h3 id="文件绝对路径和相对路径的表示形式不同"><a href="#文件绝对路径和相对路径的表示形式不同" class="headerlink" title="文件绝对路径和相对路径的表示形式不同"></a>文件绝对路径和相对路径的表示形式不同</h3><ol>
+<li>windows系统中绝对路径用<code>\</code>展开，而在其他系统中会出现用<code>/</code>的展开</li>
+<li>相对路径中则使用<code>/</code>，比如返回上一级文件夹<code>../</code>，当前文件夹前不需要加斜杠，前往下一级文件夹的某文件则类似于<code>/xx/xx.c</code></li>
+</ol>
+<h3 id="python语法：格式化输出之format用法"><a href="#python语法：格式化输出之format用法" class="headerlink" title="python语法：格式化输出之format用法"></a><a target="_blank" rel="noopener" href="https://www.cnblogs.com/lovejh/p/9201219.html">python语法：格式化输出之format用法</a></h3></font>
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>ZHANG YANCHI</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="http://example.com/2020/03/27/PYTHON-%E4%B9%8B-%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/">http://example.com/2020/03/27/PYTHON-%E4%B9%8B-%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>Do you believe in <strong>DESTINY</strong>?</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/record/"># record</a>
+                    
+                        <a href="/tags/python/"># python</a>
+                    
+                        <a href="/tags/PIL/"># PIL</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2020/03/28/Ielts-3/">Ielts小班课学习-3</a>
+            
+            
+            <a class="next" rel="next" href="/2020/03/25/%E5%9B%BE%E5%83%8F%E8%AF%86%E5%88%AB%E4%B8%8E%E5%A4%84%E7%90%86/">图像识别与处理</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+
+
+    <section id="comments" class="comments">
+      <style>
+        .comments{margin:30px;padding:10px;background:#fff}
+        @media screen and (max-width:100px){.comments{margin:100px;padding:10px;background:#fff}}
+      </style>
+      <div class="valine_comment"></div>
+<!--载入js，在</body>之前插入即可-->
+<!--Leancloud 操作库:-->
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<!--Valine 的核心代码库-->
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+  new Valine({
+      el: '.valine_comment',
+      app_id: 'TPQWn5RsCkS2c8OwbgXhJ6CP-gzGzoHsz',
+      app_key: 'f1r3TAkLX0L1DJd7nS2KFVo9',
+      placeholder: 'plz command here..',
+      notify: 'true',
+      verify: 'true',
+    });
+</script>
+
+    </section>
+
+
+
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© ZHANG YANCHI | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="ZHANG YANCHI">
+
+
+
+
+
+<title>python学习-2 | Delayzzz&#39;s blog</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 5.3.0"></head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">Delayzyc&#39;s Private Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">Delayzyc&#39;s Private Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">python学习-2</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">ZHANG YANCHI</a>
+                    
+                    
+                        <span class="post-time">
+                        Date: <a href="#">March 13, 2020&nbsp;&nbsp;18:44:57</a>
+                        </span>
+                    
+
+			<span id="/2020/03/13/python%E5%AD%A6%E4%B9%A0-2/" class="leancloud-visitors view" data-flag-title="python学习-2">
+			  <em class="post-meta-item-text">Pageviews:</em>
+			  <i class="leancloud-visitors-count">loading</i>
+			</span>
+
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/Python/">Python</a>
+                            
+                        </span>
+                    
+            	    
+		    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <p><a target="_blank" rel="noopener" href="https://www.liaoxuefeng.com/wiki/1016959663602400/1017261630425888">函数的各种参数类型，廖雪峰的博客</a></p>
+<p>今天主要学习了函数，函数参量的种类和一些注意事项</p>
+<ul>
+<li><p><code>From xx import xxx</code> 可以从xx.py文件中引用函数xxx(…)</p>
+</li>
+<li><p><code>isinstance(object, classinfo)</code> object-实例对象、classinfo-可以是直接或间接类名、基本类型或者由它们组成的元组；相比于<kbd>type()</kbd>，建议使用<kbd>isinstance()</kbd></p>
+</li>
+<li><p><code>x**n</code> 变量的高次幂的表示形式</p>
+</li>
+<li><p><code>def f2(a, b, c=0, *, d, **kw):</code> 函数的参数组合，注意顺序；此外，对于任意函数，都可以通过类似<kbd>func(*args, **kw)</kbd>的形式调用它，无论它的参数是如何定义</p>
+</li>
+</ul>
+<hr>
+<ul>
+<li>递归函数，思路很重要，自己的理解能力还是太弱了，加强锻炼吧！</li>
+</ul>
+<blockquote>
+<p>递归函数的经典问题：汉诺塔；例程函数如下</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">def hanoi(n,a,b,c):</span><br><span class="line">    # 当n为1时 (递归基础)</span><br><span class="line">    if n &#x3D;&#x3D; 1:</span><br><span class="line">        print(a, &#39;--&gt;&#39;, c) # 将A柱最底层的圆盘移动到C柱</span><br><span class="line">    # 当n大于1时</span><br><span class="line">    else:</span><br><span class="line">        hanoi(n-1, a, c, b) # 借助C柱，将n-1个圆盘从A柱移动到B柱</span><br><span class="line">        print(a, &#39;--&gt;&#39;, c) # 将A柱最底层的圆盘移动到C柱</span><br><span class="line">        hanoi(n-1, b, a, c) # 借助A柱，将n-1个圆盘从B柱移动到C柱</span><br></pre></td></tr></table></figure>
+<hr>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.runoob.com/python/python-func-range.html">range()函数用法</a> <code>range(start, stop[, step])</code> 基本用于for循环,生成列表或元组的一般表达形式<kbd><strong>list(range(x,x,x))</strong></kbd>或<kbd><strong>tuple(range(x,x,x))</strong></kbd></li>
+<li></li>
+</ul>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>ZHANG YANCHI</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="http://example.com/2020/03/13/python%E5%AD%A6%E4%B9%A0-2/">http://example.com/2020/03/13/python%E5%AD%A6%E4%B9%A0-2/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>Do you believe in <strong>DESTINY</strong>?</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/python/"># python</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2020/03/14/ielts-1/">Ielts小班课学习-1</a>
+            
+            
+            <a class="next" rel="next" href="/2020/03/12/Python/">Python!</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+
+
+    <section id="comments" class="comments">
+      <style>
+        .comments{margin:30px;padding:10px;background:#fff}
+        @media screen and (max-width:100px){.comments{margin:100px;padding:10px;background:#fff}}
+      </style>
+      <div class="valine_comment"></div>
+<!--载入js，在</body>之前插入即可-->
+<!--Leancloud 操作库:-->
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<!--Valine 的核心代码库-->
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+  new Valine({
+      el: '.valine_comment',
+      app_id: 'TPQWn5RsCkS2c8OwbgXhJ6CP-gzGzoHsz',
+      app_key: 'f1r3TAkLX0L1DJd7nS2KFVo9',
+      placeholder: 'plz command here..',
+      notify: 'true',
+      verify: 'true',
+    });
+</script>
+
+    </section>
+
+
+
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© ZHANG YANCHI | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>

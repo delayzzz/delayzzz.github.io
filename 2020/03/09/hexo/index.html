@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="ZHANG YANCHI">
+
+
+
+
+
+<title>Hexo Learning Record | Delayzzz&#39;s blog</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 5.3.0"></head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">Delayzyc&#39;s Private Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">Delayzyc&#39;s Private Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">Hexo Learning Record</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">ZHANG YANCHI</a>
+                    
+                    
+                        <span class="post-time">
+                        Date: <a href="#">March 9, 2020&nbsp;&nbsp;23:14:18</a>
+                        </span>
+                    
+
+			<span id="/2020/03/09/hexo/" class="leancloud-visitors view" data-flag-title="Hexo Learning Record">
+			  <em class="post-meta-item-text">Pageviews:</em>
+			  <i class="leancloud-visitors-count">loading</i>
+			</span>
+
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/hexo/">hexo</a>
+                            
+                        </span>
+                    
+            	    
+		    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <p> <img src="/../images/hexo-github.png" alt="hexo × github" title="hexo × github"></p>
+<hr>
+<h1 id="目录索引"><a href="#目录索引" class="headerlink" title="目录索引"></a>目录索引</h1><p><a href="#1">2020/3/09 利用hexo在github上创建个人博客</a><br><a href="#2">2020/3/10 更换hexo博客主题为icarus</a><br><a href="#3">2020/3/11 开始学习修改icarus主题配置文件</a><br><a href="#4">2020/3/12 使用valine开启评论功能</a></p>
+<hr>
+<h2 id="1">2020/3/09 利用hexo在github上创建个人博客</h2>
+
+<ul>
+<li>一直想有一个私人的空间记录自己不管是日常生活还是各种知识学习，b站真是个好东西，30分钟自主搭建成功自己的小网页，以后可以好好耍一耍了</li>
+<li><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/av44544186?from=search&seid=18115415769740001358">此处附上hexo入门视频，感谢网络</a></li>
+</ul>
+<hr>
+<h2 id="2">2020/3/10 更换hexo博客主题为icarus</h2>
+
+<h3 id="缺少cheerio文件或库"><a href="#缺少cheerio文件或库" class="headerlink" title="缺少cheerio文件或库"></a>缺少cheerio文件或库</h3><ul>
+<li>首先更换主题完后进行hexo指令发现直接出现错误，以为是download&nbsp; zip直接下载剪切进去太粗暴，于是又在github上直接clone到icarus文件夹中，问题还有，定睛一看错误的具体内容，有个叫cheerio的东西没安装，百度咋办，安装呗</li>
+</ul>
+<blockquote>
+<p><code>npm install cheerio</code></p>
+</blockquote>
+<h3 id="无法部署到远程github网站"><a href="#无法部署到远程github网站" class="headerlink" title="无法部署到远程github网站"></a>无法部署到远程github网站</h3><ul>
+<li>按好了之后终于可以套在自己的文章上了（虽然啥都没写），localhost/4000上预览之后准备推到github网站上，结果出了第二个问题，无法deploy到git，爷气死了，这又是啥玩意啊，不过还好百度找到了答案</li>
+</ul>
+<blockquote>
+<p>hexo更新到3.0之后，deploy的type的github需要改成git<br><code>npm install hexo-deployer-git --save</code>&emsp;改了之后执行，然后再部署试试</p>
+</blockquote>
+<ul>
+<li><p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/5e0ca2b14815">这是参考解答链接</a>&emsp;<a target="_blank" rel="noopener" href="https://www.v2ex.com/t/175940">另一个参考</a></p>
+</li>
+<li><p>好了，可以开始学习icarus主题上的设置更改和优化了</p>
+</li>
+</ul>
+<hr>
+<h2 id="3">2020/3/11 开始学习修改icarus主题配置文件</h2>
+
+<ul>
+<li><p><a target="_blank" rel="noopener" href="https://github.com/ppoffice/hexo-theme-icarus">首先，放上github源（含部分介绍），本次只是记录部分不能理解或者不会使用的功能以及些许理解</a></p>
+<p>分享网上的详细讲解，就不多说了</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://blog.51cto.com/14006572/2437990">非常详细，黄小邪</a></p>
+</li>
+</ul>
+<hr>
+<h2 id="4">2020/3/12 使用valine开启评论功能</h2>
+
+<ul>
+<li><a target="_blank" rel="noopener" href="https://valine.js.org/quickstart.html">这里是valine的详细获取APP id与APP key的说明</a></li>
+</ul>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>ZHANG YANCHI</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="http://example.com/2020/03/09/hexo/">http://example.com/2020/03/09/hexo/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>Do you believe in <strong>DESTINY</strong>?</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/record/"># record</a>
+                    
+                        <a href="/tags/hexo/"># hexo</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2020/03/12/DT35%E7%9B%B8%E5%85%B3%E7%9A%84%E5%A4%87%E5%BF%98%E8%AF%B4%E6%98%8E/">DT35相关的备忘说明</a>
+            
+            
+            <a class="next" rel="next" href="/2020/03/09/nice%20to%20meet%20hexo/">Nice to meet you,Hexo</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+
+
+    <section id="comments" class="comments">
+      <style>
+        .comments{margin:30px;padding:10px;background:#fff}
+        @media screen and (max-width:100px){.comments{margin:100px;padding:10px;background:#fff}}
+      </style>
+      <div class="valine_comment"></div>
+<!--载入js，在</body>之前插入即可-->
+<!--Leancloud 操作库:-->
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<!--Valine 的核心代码库-->
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+  new Valine({
+      el: '.valine_comment',
+      app_id: 'TPQWn5RsCkS2c8OwbgXhJ6CP-gzGzoHsz',
+      app_key: 'f1r3TAkLX0L1DJd7nS2KFVo9',
+      placeholder: 'plz command here..',
+      notify: 'true',
+      verify: 'true',
+    });
+</script>
+
+    </section>
+
+
+
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© ZHANG YANCHI | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>

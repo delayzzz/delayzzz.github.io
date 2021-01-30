@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="ZHANG YANCHI">
+
+
+
+
+
+<title>python 之 opencv-摄像头采集和视频播放 | Delayzzz&#39;s blog</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 5.3.0"></head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">Delayzyc&#39;s Private Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">Delayzyc&#39;s Private Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">python 之 opencv-摄像头采集和视频播放</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">ZHANG YANCHI</a>
+                    
+                    
+                        <span class="post-time">
+                        Date: <a href="#">March 30, 2020&nbsp;&nbsp;2:45:22</a>
+                        </span>
+                    
+
+			<span id="/2020/03/30/opencv3/" class="leancloud-visitors view" data-flag-title="python 之 opencv-摄像头采集和视频播放">
+			  <em class="post-meta-item-text">Pageviews:</em>
+			  <i class="leancloud-visitors-count">loading</i>
+			</span>
+
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/Image-Processing/">Image Processing</a>
+                            
+                        </span>
+                    
+            	    
+		    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <font face='Times New Roman'>
+
+<h2 id="打开摄像头"><a href="#打开摄像头" class="headerlink" title="打开摄像头"></a>打开摄像头</h2><hr>
+<p>要使用摄像头，需要使用<code>cv2.VideoCapture(0)</code>创建VideoCapture对象，参数0指的是摄像头的编号，如果你电脑上有两个摄像头的话，访问第2个摄像头就可以传入1，依此类推。</p>
+<h4 id="capture-read"><a href="#capture-read" class="headerlink" title="capture.read"></a><strong>capture.read</strong></h4><p>函数返回的第1个参数ret(return value缩写)是一个布尔值，表示当前这一帧是否获取正确</p>
+<h4 id="cv2-cvtColor"><a href="#cv2-cvtColor" class="headerlink" title="cv2.cvtColor"></a><strong>cv2.cvtColor</strong></h4><p>用来转换颜色，这里将彩色图转成灰度图</p>
+<h4 id="cap-get-propId-、-cap-set-propId-value"><a href="#cap-get-propId-、-cap-set-propId-value" class="headerlink" title="cap.get(propId)__、__cap.set(propId,value)"></a><strong>cap.get(propId)__、__cap.set(propId,value)</strong></h4><p>通过<code>cap.get(propId)</code>可以获取摄像头的一些属性，比如捕获的分辨率，亮度和对比度等。propId是从0~18的数字，代表不同的属性，完整的属性列表可以参考：<a target="_blank" rel="noopener" href="https://docs.opencv.org/4.0.0/d4/d15/group__videoio__flags__base.html#gaeb8dd9c89c10a5c63c139bf7c4f5704d">VideoCaptureProperties</a>。也可以使用<code>cap.set(propId,value)</code>来修改属性值</p>
+<blockquote>
+<p>经验之谈：某些摄像头设定分辨率等参数时会无效，因为它有固定的分辨率大小支持，一般可在摄像头的资料页中找到。</p>
+</blockquote>
+<h2 id="播放本地视频"><a href="#播放本地视频" class="headerlink" title="播放本地视频"></a>播放本地视频</h2><hr>
+<p>跟打开摄像头一样，如果把摄像头的编号换成视频的路径就可以播放本地视频了。回想一下<code>cv2.waitKey()</code>，它的参数表示暂停时间，所以这个值越大，视频播放速度越慢，反之，播放速度越快，通常设置为25或30。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 播放本地视频</span></span><br><span class="line">capture = cv2.VideoCapture(<span class="string">&#x27;demo_video.mp4&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span>(capture.isOpened()):</span><br><span class="line">    ret, frame = capture.read()</span><br><span class="line">    gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)</span><br><span class="line"></span><br><span class="line">    cv2.imshow(<span class="string">&#x27;frame&#x27;</span>, gray)</span><br><span class="line">    <span class="keyword">if</span> cv2.waitKey(<span class="number">30</span>) == <span class="built_in">ord</span>(<span class="string">&#x27;q&#x27;</span>):</span><br><span class="line">        <span class="keyword">break</span></span><br></pre></td></tr></table></figure>
+<h2 id="录制视频"><a href="#录制视频" class="headerlink" title="录制视频"></a>录制视频</h2><hr>
+<p>之前我们保存图片用的是<code>cv2.imwrite()</code>，要保存视频，我们需要创建一个<code>VideoWriter</code>的对象，需要给它传入四个参数：</p>
+<ul>
+<li>输出的文件名，如’output.avi’</li>
+<li>编码方式<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/fourcc/6168470?fr=aladdin">FourCC</a>码</li>
+<li>帧率<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/FPS/3227416">FPS</a></li>
+<li>要保存的分辨率大小</li>
+</ul>
+<p>FourCC是用来指定视频编码方式的四字节码，所有的编码可参考<a target="_blank" rel="noopener" href="http://www.fourcc.org/codecs.php">Video Codecs</a>。如MJPG编码可以这样写： <code>cv2.VideoWriter_fourcc(*&#39;MJPG&#39;)</code>或<code>cv2.VideoWriter_fourcc(&#39;M&#39;,&#39;J&#39;,&#39;P&#39;,&#39;G&#39;)</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">capture = cv2.VideoCapture(<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义编码方式并创建VideoWriter对象</span></span><br><span class="line">fourcc = cv2.VideoWriter_fourcc(*<span class="string">&#x27;MJPG&#x27;</span>)</span><br><span class="line">outfile = cv2.VideoWriter(<span class="string">&#x27;output.avi&#x27;</span>, fourcc, <span class="number">25.</span>, (<span class="number">640</span>, <span class="number">480</span>))</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span>(capture.isOpened()):</span><br><span class="line">    ret, frame = capture.read()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> ret:</span><br><span class="line">        outfile.write(frame)  <span class="comment"># 写入文件</span></span><br><span class="line">        cv2.imshow(<span class="string">&#x27;frame&#x27;</span>, frame)</span><br><span class="line">        <span class="keyword">if</span> cv2.waitKey(<span class="number">1</span>) == <span class="built_in">ord</span>(<span class="string">&#x27;q&#x27;</span>):</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">break</span></span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/u011436429/article/details/80604590">OpenCV VideoCapture.get()参数中文详解，不太准确供参考</a></p>
+<h2 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h2><hr>
+<ul>
+<li>实现一个可以拖动滑块播放视频的功能。（提示：需要用到 <code>cv2.CAP_PROP_FRAME_COUNT</code>和<code>cv2.CAP_PROP_POS_FRAMES</code>两个属性）</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">changetime</span>(<span class="params">x</span>):</span></span><br><span class="line">    <span class="keyword">return</span> capture.<span class="built_in">set</span>(cv2.CAP_PROP_POS_FRAMES, x)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 播放本地视频</span></span><br><span class="line">capture = cv2.VideoCapture(<span class="string">&#x27;demo_video.mp4&#x27;</span>)</span><br><span class="line"><span class="comment">#获取视频帧长度</span></span><br><span class="line">frame_count = capture.get(cv2.CAP_PROP_FRAME_COUNT)</span><br><span class="line"><span class="comment">#创建一个窗口</span></span><br><span class="line">cv2.namedWindow(<span class="string">&#x27;video&#x27;</span>)</span><br><span class="line"><span class="comment"># 创建视频滑动条</span></span><br><span class="line">cv2.createTrackbar(<span class="string">&#x27;video&#x27;</span>, <span class="string">&#x27;video&#x27;</span>, <span class="number">0</span>, <span class="built_in">int</span>(frame_count), changetime)</span><br><span class="line"></span><br><span class="line">height = capture.get(cv2.CAP_PROP_FRAME_HEIGHT)</span><br><span class="line">width = capture.get(cv2.CAP_PROP_FRAME_WIDTH)</span><br><span class="line">print(capture.<span class="built_in">set</span>(cv2.CAP_PROP_FRAME_HEIGHT, height * <span class="number">2</span>))</span><br><span class="line">print(capture.<span class="built_in">set</span>(cv2.CAP_PROP_FRAME_WIDTH, width * <span class="number">2</span>))</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span>(capture.isOpened()):</span><br><span class="line">    ret, frame = capture.read()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> ret == <span class="literal">True</span>:</span><br><span class="line">        cv2.setTrackbarPos(<span class="string">&#x27;video&#x27;</span>,<span class="string">&#x27;video&#x27;</span>,<span class="built_in">int</span>(capture.get(cv2.CAP_PROP_POS_FRAMES)))</span><br><span class="line">        cv2.imshow(<span class="string">&#x27;video&#x27;</span>, frame)</span><br><span class="line">        <span class="keyword">if</span> cv2.waitKey(<span class="number">30</span>) == <span class="built_in">ord</span>(<span class="string">&#x27;q&#x27;</span>):</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">break</span></span><br></pre></td></tr></table></figure>
+</font>
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>ZHANG YANCHI</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="http://example.com/2020/03/30/opencv3/">http://example.com/2020/03/30/opencv3/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>Do you believe in <strong>DESTINY</strong>?</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/python/"># python</a>
+                    
+                        <a href="/tags/opencv/"># opencv</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2020/04/03/opencv-4/">python 之 opencv 阶段总结篇</a>
+            
+            
+            <a class="next" rel="next" href="/2020/03/30/opencv2/">python 之 opencv-matplotlib显示图片</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+
+
+    <section id="comments" class="comments">
+      <style>
+        .comments{margin:30px;padding:10px;background:#fff}
+        @media screen and (max-width:100px){.comments{margin:100px;padding:10px;background:#fff}}
+      </style>
+      <div class="valine_comment"></div>
+<!--载入js，在</body>之前插入即可-->
+<!--Leancloud 操作库:-->
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<!--Valine 的核心代码库-->
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+  new Valine({
+      el: '.valine_comment',
+      app_id: 'TPQWn5RsCkS2c8OwbgXhJ6CP-gzGzoHsz',
+      app_key: 'f1r3TAkLX0L1DJd7nS2KFVo9',
+      placeholder: 'plz command here..',
+      notify: 'true',
+      verify: 'true',
+    });
+</script>
+
+    </section>
+
+
+
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© ZHANG YANCHI | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>
