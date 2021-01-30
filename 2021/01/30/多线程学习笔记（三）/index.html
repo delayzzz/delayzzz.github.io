@@ -198,6 +198,31 @@
 <li><code>wait_for()</code>函数：等待一段时间</li>
 </ul>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">std</span>::<span class="built_in">future</span>&lt;<span class="keyword">int</span>&gt; result = <span class="built_in">std</span>::async(mythread);</span><br><span class="line">...</span><br><span class="line"><span class="built_in">std</span>::future_status status = result.wait_for(<span class="built_in">std</span>::chrono::seconds(<span class="number">1</span>));</span><br><span class="line"><span class="keyword">if</span>(status == <span class="built_in">std</span>::future_status::timeout)</span><br><span class="line">&#123;<span class="comment">//超时，线程还没有执行完</span></span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;超时，线程此时未执行完毕&quot;</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span> <span class="keyword">if</span>(status == <span class="built_in">std</span>::future_status::ready)</span><br><span class="line">&#123;<span class="comment">//表示线程成功返回</span></span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;线程成功执行完毕，返回&quot;</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; result.get() &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span> <span class="keyword">if</span>(status == <span class="built_in">std</span>::future_status::deferred)</span><br><span class="line">&#123;<span class="comment">//若std::async第一个参数被设为std::launch::deferred，则此条件成立</span></span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;线程被延迟执行&quot;</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; result.get() &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//此时，线程需要执行5秒，这里因为没有等待子线程结束的相关函数，故主线程在&quot;return 0&quot;处等待子线程执行完毕，上节课讲过</span></span><br></pre></td></tr></table></figure>
+<h2 id="2-std-shared-future"><a href="#2-std-shared-future" class="headerlink" title="(2)std::shared_future"></a>(2)<code>std::shared_future</code></h2><p>知识点回顾：<code>std::future</code>对象的成员函数<code>get()</code>只能使用一次，是因为此函数的设计，是一个移动语义</p>
+<blockquote>
+<p>如果使用<code>get()</code>函数，在其他子线程中获取某子线程的结果，那么非常不方便，因为<code>get()</code>函数只能使用一次，所以引入<code>shared_future</code></p>
+</blockquote>
+<ul>
+<li><code>std::shared_future</code>：也是一个类模板，<code>get()</code>成员函数功能为复制数据</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">syd::<span class="built_in">future</span>&lt;<span class="keyword">int</span>&gt; result = mypt.get_future();</span><br><span class="line"><span class="function"><span class="built_in">std</span>::shared_future&lt;<span class="keyword">int</span>&gt; <span class="title">result_s</span><span class="params">(<span class="built_in">std</span>::move(result))</span></span>;</span><br><span class="line"><span class="comment">//std::shared_future&lt;int&gt; result_s(result.share());//与上句结果相同</span></span><br><span class="line"><span class="comment">//移动到shared_future中后，future对象中的值为空</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>使用<code>shared_future</code>直接替换掉<code>future</code></li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="built_in">std</span>::shared_future&lt;<span class="keyword">int</span>&gt; <span class="title">result_s</span><span class="params">(mypt.get_future())</span></span>;</span><br></pre></td></tr></table></figure>
+<h2 id="3-原子操作std-atomic"><a href="#3-原子操作std-atomic" class="headerlink" title="(3)原子操作std::atomic"></a>(3)原子操作<code>std::atomic</code></h2><h3 id="原子操作概念引出范例"><a href="#原子操作概念引出范例" class="headerlink" title="原子操作概念引出范例"></a>原子操作概念引出范例</h3><ul>
+<li>互斥量：多线程编程中，保护共享数据；拿锁、操作共享数据、开锁</li>
+</ul>
+<blockquote>
+<p>有两个线程对一个变量进行操作，一个读一个写，肯定会出现问题，通常我们会想到用互斥量解决，而<strong>原子操作</strong>也可以用来解决这样的问题</p>
+<p>我们可以把原子操作理解成一种不需要用到互斥量加锁技术的多线程并发编程方式</p>
+</blockquote>
+<ul>
+<li>原子操作：在多线程中不会被打断的程序执行片段，效率上比互斥量更胜一筹。但互斥量的加锁一般是针对一个代码段，而原子操作针对的是一个变量</li>
+<li>原子操作一般指“不可分割的操作”，即这种操作状态要么完成，要么没完成，不可能出现中间状态</li>
+<li><code>std::atomic</code>来代表原子操作，其为一个类模板。其实是使用它来封装某个类型的值</li>
+</ul>
+<h3 id="基本的std-atomic用法范例"><a href="#基本的std-atomic用法范例" class="headerlink" title="基本的std::atomic用法范例"></a>基本的<code>std::atomic</code>用法范例</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">std</span>::atomic&lt;<span class="keyword">int</span>&gt; g_mycout = <span class="number">0</span>;<span class="comment">//我们封装了一个类型为int的对象（值），我们可以像操作一个int类型变量一样</span></span><br></pre></td></tr></table></figure>
 
         </div>
 
