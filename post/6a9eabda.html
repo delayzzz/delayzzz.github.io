@@ -5,8 +5,6 @@
   <!-- SEO相关 -->
   
     
-      <meta name="robots" content="noindex,follow">
-    
   
   <!-- 渲染优化 -->
   <meta http-equiv='x-dns-prefetch-control' content='on' />
@@ -24,9 +22,16 @@
 
   <!-- 页面元数据 -->
   
-  <title>归档 - 好困啊</title>
+  <title>Windows上再次部署Hexo博客详细过程 - 好困啊</title>
+  
+    <meta name="keywords" content="hexo,git">
   
 
+  
+    <meta name="description" content="
+这应该是重新学习部署hexo的第5遍了！！😫真心不想每次重新在新环境中搭建都这么麻烦，于是把记录写的详细一点
+
+教学链接（已收藏b站）https://www.bilibili.com/video/BV1Yb411a7ty?from=search&seid=17028582476973123983">
   
 
   <!-- feed -->
@@ -106,7 +111,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   <body>
     
 
-<header id="l_header" class="l_header auto shadow floatable blur " style='opacity: 0' >
+<header id="l_header" class="l_header auto shadow floatable blur show" style='opacity: 0' >
   <div class='container'>
   <div id='wrapper'>
     <div class='nav-sub'>
@@ -500,7 +505,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       <div id="l_cover">
   
     
-        <div id="half" class='cover-wrapper  search' style="display: ;">
+        <div id="full" class='cover-wrapper post search' style="display: none;">
           
             <div id='cover-backstretch'></div>
           
@@ -572,47 +577,279 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           
 
 <div class='l_main'>
-	
-	  <article id="arc" class="post article white-box reveal shadow floatable blur">
-			
-			
-				
-				
-					
-						
-						<h2>2021</h2>
-					
-						<div class='timenode'>
-								<a class="meta" href="/post/6a9eabda.html">
-									<time>08-13</time>
-									
-										Windows上再次部署Hexo博客详细过程
-									
-									
-									
-									
-								</a>
-						</div>
-				
-			
-				
-				
-					
-						<div class='timenode'>
-								<a class="meta" href="/post/c5a02b36.html">
-									<time>08-12</time>
-									
-										一篇穿戴式柔性汗液传感器综述，值得学习
-									
-									
-									
-									
-								</a>
-						</div>
-				
-			
-	  </article>
-	
+  <article class="article post white-box reveal md shadow floatable blur article-type-post" id="post" itemscope itemprop="blogPost">
+  
+
+
+  
+    <div class='headimg-div'>
+      <a class='headimg-a'>
+        <img class='headimg' src='https://raw.githubusercontent.com/delayzzz/image_source/main/blog/post/Windows%E4%B8%8A%E5%86%8D%E6%AC%A1%E9%83%A8%E7%BD%B2Hexo%E5%8D%9A%E5%AE%A2%E8%AF%A6%E7%BB%86%E8%BF%87%E7%A8%8B/1.jpeg'/>
+      </a>
+    </div>
+  
+  <div class="article-meta" id="top">
+    
+    
+    
+      <h1 class="title">
+        Windows上再次部署Hexo博客详细过程
+      </h1>
+      <div class='new-meta-box'>
+        
+          
+            
+<div class='new-meta-item author'>
+  <a class='author' target="_blank" href="https://github.com/delayzzz" rel="nofollow noopener">
+    <img no-lazy src="https://raw.githubusercontent.com/delayzzz/image_source/main/blog/decoration/avatar.jpg">
+    <p>De1aYzzZ</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  <div class='new-meta-item category'>
+    <a class='notlink'>
+      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
+      <a class="category-link" href="/categories/%E6%9D%82%E8%AE%B0/">杂记</a><span class="sep"></span><a class="category-link" href="/categories/%E6%9D%82%E8%AE%B0/%E5%A4%87%E5%BF%98/">备忘</a>
+    </a>
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：2021年8月13日</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  <div class="new-meta-item wordcount">
+    <a class='notlink'>
+      <i class="fas fa-keyboard fa-fw" aria-hidden="true"></i>
+      <p>字数：1.5k字</p>
+    </a>
+  </div>
+  <div class="new-meta-item readtime">
+    <a class='notlink'>
+      <i class="fas fa-hourglass-half fa-fw" aria-hidden="true"></i>
+      <p>时长：5分钟</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+  <div class="new-meta-item browse leancloud">
+    <a class='notlink'>
+      
+      <div id="lc-pv" data-title="Windows上再次部署Hexo博客详细过程" data-path="/post/6a9eabda.html">
+        <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
+        <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
+        次浏览
+      </div>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+<div class="new-meta-item comments-count">
+  
+  <a href="/post/6a9eabda.html#comments">
+    <i class="fas fa-comment-dots fa-fw"></i>
+    <span class="valine-comment-count" data-xid="/post/6a9eabda.html">0</span>
+    <span class="leancloud-comments-count">&nbsp;</span>
+  </a>
+</div>
+
+
+          
+        
+      </div>
+    
+  </div>
+
+
+  
+  
+  <blockquote>
+<p>这应该是重新学习部署<em>hexo</em>的第5遍了！！😫<br>真心不想每次重新在新环境中搭建都这么麻烦，于是把记录写的详细一点</p>
+</blockquote>
+<div class="tag link"><a class="link-card" title="教学链接（已收藏b站）" target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Yb411a7ty?from=search&seid=17028582476973123983"><div class="left"><img src="https://cdn.worldvectorlogo.com/logos/bilibili-logo-blue.svg" class="lazyload" data-srcset="https://cdn.worldvectorlogo.com/logos/bilibili-logo-blue.svg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="/></div><div class="right"><p class="text">教学链接（已收藏b站）</p><p class="url">https://www.bilibili.com/video/BV1Yb411a7ty?from=search&seid=17028582476973123983</p></div></a></div>
+
+<span id="more"></span>
+
+<h2 id="安装及初始化步骤"><a href="#安装及初始化步骤" class="headerlink" title="安装及初始化步骤"></a>安装及初始化步骤</h2><ul>
+<li>网址<code>nodejs.org</code>安装<em>node</em>的<em>LTS</em>版本（长期支持版），安装位置可以自定义，安装时选择了安装一个<em>chocolatey</em>的包，不知道是什么，它会自动补齐<em>python</em>、<em>vs</em>的运行环境之类的（这个安装可能要耗费至少半个小时的时间，可以先放在一旁）。安装后在<em>win</em>的命令行查看<em>node</em>和<em>npm</em>包的版本</li>
+</ul>
+<figure class="highlight plaintext"><figcaption><span>terminal</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">node -v</span><br><span class="line">npm -v</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>之后下载一个<em>cnpm</em>，来镜像安装一些东西。安装完成后查看<em>cnpm</em>有没有安装好。</li>
+</ul>
+<figure class="highlight plaintext"><figcaption><span>terminal</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install -g cnpm --registry=http://registry.npm.taobao.org</span><br><span class="line">cnpm -v</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>查看<em>cnpm</em>版本时可能报错，是因为<em>windows</em>系统的设置导致无法运行脚本。于是敲入下面的代码，回复<em>A</em>选择“全是”</li>
+</ul>
+<figure class="highlight plaintext"><figcaption><span>terminal</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">set-ExecutionPolicy RemoteSigned</span><br><span class="line">&quot;A&quot; </span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>安装<em>hexo</em>以及相关依赖，以及验证<em>hexo</em>版本。创建自己的博客主目录，之后所有的操作都在这个文件夹中进行，要是博客遇到不可逆的问题，直接删除就好了，对其他东西没有任何影响。</li>
+</ul>
+<figure class="highlight plaintext"><figcaption><span>terminal</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br><span class="line">hexo -v</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>之后最主要的操作，创建<em>hexo</em>博客</li>
+</ul>
+<figure class="highlight plaintext"><figcaption><span>terminal</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo init</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>之后就是<em>hexo</em>包的基础操作</li>
+</ul>
+<figure class="highlight plaintext"><figcaption><span>terminal</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hexo s  启动本地服务器，执行预览操作</span><br><span class="line">hexo n &quot;title&quot;  创建新文章post</span><br><span class="line">hexo clean 每次要更新博客内容前，需要执行此操作</span><br><span class="line">hexo g     清理完之后生成新的内容即可</span><br></pre></td></tr></table></figure>
+
+<h2 id="如何部署到github上"><a href="#如何部署到github上" class="headerlink" title="如何部署到github上"></a>如何部署到github上</h2><ol>
+<li>首先在<em>github</em>中新建一个库，库的名字必须是—账户名*.github.io*</li>
+<li>之后在博客文件目录下安装一个<em>git</em>部署的插件</li>
+</ol>
+<figure class="highlight plaintext"><figcaption><span>terminal</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">注意目录是在博客文件目录中 本机是F:\zyc_github_repo\hexo_blog</span><br><span class="line">cnpm install --save hexo-deployer-git</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>打开主目录中的博客配置文件*_config.yml<em>，最下面有一个</em># deployment*单元，修改并添加内容</li>
+</ol>
+<figure class="highlight plaintext"><figcaption><span>terminal</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">注意下面每个冒号后都有一个占位符，并且这里对应部署的库事delayzzz，可能不同</span><br><span class="line">deploy</span><br><span class="line">  type: git</span><br><span class="line">  repo: https://github.com/delayzzz/delayzzz.github.io.git   </span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>最后就是部署到远端的指令。</li>
+</ol>
+<figure class="highlight plaintext"><figcaption><span>terminal</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo d  可能需要输入github的账号和密码</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>注意这里遇到问题，可能电脑没安装<em>git</em>，必须要先安装，安装好后要在该目录下进行<em>git</em>的初始化，否则即报错不存在<em>git repository</em>。并且我认为最好把这个本地博客和远程<em>github</em>上对应的仓库关联上。！！<strong>注意注意</strong>！！第二句的“仓库地址”必须清楚，是<em>https</em>格式还是<em>ssh</em>格式，建议是<em>ssh</em>格式，因为等外网总会有时候行又不行的。那这个需要在本地创建一个<em>ssh</em>密钥并关联到<em>github</em>账号里！</li>
+</ul>
+<figure class="highlight plaintext"><figcaption><span>terminal</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br><span class="line">git remote add origin 仓库地址</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>部署远端<em>github</em>上还是有时候会有问题，下面介绍一下解决过程</li>
+</ul>
+<figure class="highlight plaintext"><figcaption><span>terminal</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">一开始会报错</span><br><span class="line">fatal: unable to access &#x27;https://github.com/delayzzz/delayzzz.github.io.git/&#x27;: OpenSSL SSL_read: Connection was reset, errno 10054</span><br><span class="line"></span><br><span class="line">之后百度查是什么问题，解决问题是敲入指令</span><br><span class="line">git config --global http.sslVerify &quot;false&quot;</span><br><span class="line"></span><br><span class="line">敲入之后在尝试远程部署，发现换了另一种报错</span><br><span class="line">fatal: unable to access &#x27;https://github.com/delayzzz/delayzzz.github.io.git/&#x27;: Failed to connect to github.com port 443: Timed out</span><br><span class="line"></span><br><span class="line">这个我看有人回答是因为网络不行，毕竟github总在需不需要翻墙的问题上左右横跳，试了很多方法都不行。</span><br><span class="line">突然看到有人说，这个可以用SSH上传的方式解决，于是我就在本机上增加了delayzzz账号的ssh密钥。并且关联了这个目录到远程仓库</span><br><span class="line">git remote add origin https://github.com/delayzzz/delayzzz.github.io.git</span><br><span class="line"></span><br><span class="line">没用啊？还是会报错超时。此时我分析了一下，如果是网络的问题，那我用https格式那确实解决不了问题，需要用ssh格式来同步应该才有用</span><br><span class="line">git remote add origin git@github.com:delayzzz/delayzzz.github.io.git</span><br><span class="line"></span><br><span class="line">还是没用？我眉头一紧，定睛一看，hexo远程部署的远程url是之前在_config.yml里定义的，所以必须把那里的repo改成ssh格式的！有点道理把！</span><br><span class="line">  repo: git@github.com:delayzzz/delayzzz.github.io.git</span><br><span class="line"></span><br><span class="line">远程部署没出现问题了，nice</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>此时捏🐎的又有个问题，就是<em>hexo</em>默认主题的<em>readme</em>文档里有个字符还是<em>tag</em>，<em>github</em>上传但是编译不通过，应该不能正常展示<em>html</em>页面，目前只是把那个<em>readme</em>文档整个删除了。。</p>
+</li>
+<li><p>最后最后终极大<em>boss</em>问题，我第一次的整体操作不知道是哪一步有问题，或者操作顺序有问题？<em>github</em>一直给我发邮件，一开始是上一个那个文档的问题。删除后就是说我的<em>github page</em>主题风格有问题，总之我的线上博客页面一直是<em>404</em>。<strong>我大胆判断（很大胆），是我一开始把整体文件夹发到远程库了，而不是经<em>hexo deploy</em>后的静态文件，推到网上自然出问题。</strong>删掉博客文件目录，重新来了一遍，再也没有邮件骚扰我了，所以上面一个问题本来就不是问题，噫嘘唏，浪费了一晚上时间。其实我看到这个库里的语言都是些小众语言，不是<em>CSS</em>,<em>HTML</em>之流我就感觉怪怪的，所以以后犯了这样的问题也能从这里发现的！</p>
+</li>
+</ul>
+<p>[x] 现在算是大功告成了，泪目。</p>
+<ul>
+<li>当然如果你之后还是因为某些原因<del>（瞎搞玩花的结果搞脱了）</del>删除了，那么新建一般都是怎么样的呢？</li>
+</ul>
+<figure class="highlight plaintext"><figcaption><span>terminal</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo init</span><br><span class="line">git init</span><br><span class="line">npm install --save hexo-deployer-git</span><br></pre></td></tr></table></figure>
+
+<h2 id="如何更换Hexo博客主题"><a href="#如何更换Hexo博客主题" class="headerlink" title="如何更换Hexo博客主题"></a>如何更换Hexo博客主题</h2><p>很简单。。应该没有坑，改个名字而已</p>
+
+  
+  
+    
+    <div class='footer'>
+      
+      
+      
+        <div class='copyright'>
+          <blockquote>
+            
+              
+                <p>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</p>
+
+              
+            
+              
+                <p>本文永久链接是：<a href=http://delayzzz.github.io/post/6a9eabda.html>http://delayzzz.github.io/post/6a9eabda.html</a></p>
+              
+            
+          </blockquote>
+        </div>
+      
+      
+    </div>
+  
+  
+    
+
+
+  <div class='article-meta' id="bottom">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-08-14T10:27:00+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：2021年8月14日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/hexo/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>hexo</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/git/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>git</p></a></div>
+
+
+        
+      
+    </div>
+  </div>
+
+
+  
+  
+
+  
+    <div class="prev-next">
+      
+      
+        <a class='next' href='/post/c5a02b36.html'>
+          <p class='title'>一篇穿戴式柔性汗液传感器综述，值得学习<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>
+论文：《Wearable flexible sweat sensors for healthcare monitoring: a review》期刊：《Journal of The Royal...</p>
+        </a>
+      
+    </div>
+  
+</article>
+
+
+  
+
+  <article class="post white-box reveal shadow floatable blur" id="comments">
+    <p ct><i class='fas fa-comments'></i> 评论</p>
+    
+    <div id="valine_container" class="valine_thread">
+  <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
+</div>
+
+  </article>
+
+
+
+
+
+
 </div>
 <aside class='l_side'>
   
@@ -620,378 +857,28 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
     
 
-<section class="widget blogger shadow floatable blur desktop mobile">
-  <div class='content'>
-    
-      
-        <a class='avatar flat-box circle' href='/about/'>
-          <img no-lazy src='https://raw.githubusercontent.com/delayzzz/image_source/main/blog/decoration/avatar.jpg'/>
-        </a>
-      
-    
-    
-      <div class='text'>
-        
-          <h2>De1aYzzZ</h2>
-        
-        
-          <p>一个幻想敲代码的BMEer</p>
-
-        
-        
-      </div>
-    
-    
-      <div class="social-wrapper">
-        
-          
-            <a href="mailto:delayzyc@163.com"
-              class="social fas fa-envelope flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="https://github.com/delayzzz/"
-              class="social fab fa-github-alt flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="https://y.qq.com/n/ryqq/profile?uin=7wnPNK6loK-i"
-              class="social fas fa-headphones-alt flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="https://steamcommunity.com/profiles/76561198419221197"
-              class="social fab fa-steam flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="https://www.douyin.com/user/MS4wLjABAAAAp5DZ_jrGjWy0wxFWgOdkkrqrDEXeOzWv_uBbfGvCLNw1eU6rJP45MmfB4rs3OXoO?extra_params=%7B%22search_id%22%3A%2220210814171855010198071132182A87F8%22%2C%22search_result_id%22%3A%223501295637633341%22%2C%22search_keyword%22%3A%22delayzzz%22%2C%22search_type%22%3A%22user%22%7D&amp;enter_method=search_result&amp;enter_from=search_result"
-              class="social fab fa-tiktok flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-      </div>
-    
-  </div>
-</section>
-
-  
-
-  
-    
-    
-
-<section class="widget text shadow floatable blur desktop">
-  
-  <header>
-    
-      <i class="fas fa-blog fa-fw" aria-hidden="true"></i><span class='name'>对自己说</span>
-    
-  </header>
 
 
-  <div class='content'>
-    
-      <p>迷茫时且相信自己🖐🏻🌞</p>
-
-    
-  </div>
-</section>
-
-  
-
-  
-    
-    
-  
-
-  <section class="widget category shadow floatable blur desktop">
+  <section class="widget toc-wrapper shadow floatable blur desktop mobile" id="toc-div" >
     
   <header>
     
-      <a href='/blog/categories/'><i class="fas fa-folder-open fa-fw" aria-hidden="true"></i><span class='name'>文章分类</span></a>
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
     
   </header>
 
 
     <div class='content'>
-      <ul class="entry navigation">
-        
-          <li><a class="flat-box"
-            title="/categories/%E5%AD%A6%E4%B9%A0/" href="/categories/%E5%AD%A6%E4%B9%A0/"
-            id="categoriesE5ADA6E4B9A0"
-            ><div class='name'>学习</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box child"
-            title="/categories/%E5%AD%A6%E4%B9%A0/%E6%96%87%E7%8C%AE/" href="/categories/%E5%AD%A6%E4%B9%A0/%E6%96%87%E7%8C%AE/"
-            id="categoriesE5ADA6E4B9A0E69687E78CAE"
-            ><div class='name'>文献</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/%E6%9D%82%E8%AE%B0/" href="/categories/%E6%9D%82%E8%AE%B0/"
-            id="categoriesE69D82E8AEB0"
-            ><div class='name'>杂记</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box child"
-            title="/categories/%E6%9D%82%E8%AE%B0/%E5%A4%87%E5%BF%98/" href="/categories/%E6%9D%82%E8%AE%B0/%E5%A4%87%E5%BF%98/"
-            id="categoriesE69D82E8AEB0E5A487E5BF98"
-            ><div class='name'>备忘</div><div class='badge'>(1)</div></a></li>
-        
-      </ul>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E5%8F%8A%E5%88%9D%E5%A7%8B%E5%8C%96%E6%AD%A5%E9%AA%A4"><span class="toc-number">1.</span> <span class="toc-text">安装及初始化步骤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E9%83%A8%E7%BD%B2%E5%88%B0github%E4%B8%8A"><span class="toc-number">2.</span> <span class="toc-text">如何部署到github上</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E6%9B%B4%E6%8D%A2Hexo%E5%8D%9A%E5%AE%A2%E4%B8%BB%E9%A2%98"><span class="toc-number">3.</span> <span class="toc-text">如何更换Hexo博客主题</span></a></li></ol>
     </div>
   </section>
 
-
-  
-
-  
-    
-    
-  
-
-  <section class="widget tagcloud shadow floatable blur desktop mobile">
-    
-  <header>
-    
-      <a href='/blog/tags/'><i class="fas fa-tags fa-fw" aria-hidden="true"></i><span class='name'>热门标签</span></a>
-    
-  </header>
-
-
-    <div class='content'>
-      <a href="/tags/bme/" style="font-size: 14px; color: #999">bme</a> <a href="/tags/git/" style="font-size: 14px; color: #999">git</a> <a href="/tags/hexo/" style="font-size: 14px; color: #999">hexo</a> <a href="/tags/wfss/" style="font-size: 14px; color: #999">wfss</a>
-    </div>
-  </section>
-
-
-  
-
-  
-    
-    
-
-<section class="widget qrcode shadow floatable blur desktop mobile">
-  
-  <header>
-    
-      <i class="fab fa-weixin fa-fw" aria-hidden="true"></i><span class='name'>微信联系</span>
-    
-  </header>
-
-
-  <div class='content article-entry'>
-    
-      <img src='https://raw.githubusercontent.com/delayzzz/image_source/main/blog/qrcode/wechat_add.png'
-      
-        height='200px'
-      />
-    
-  </div>
-</section>
-
-  
-
-  
-    
-    
-
-<section class="widget shadow floatable blur desktop">
-  
-  <header>
-    
-      <i class="fas fa-award fa-fw" aria-hidden="true"></i><span class='name'>站点信息</span>
-    
-  </header>
-
-
-  <div class='content'>
-    <div class="webinfo">
-      
-        <div class="webinfo-item">
-          <div>文章数目：</div>
-          <div>2 篇</div>
-        </div>
-      
-
-      
-        <div class="webinfo-item">
-          <div>已运行时间：</div>
-          <div id="webinfo-runtime-count" publish_date="03/24/2020 21:34:09"></div>
-        </div>
-        <script>
-          var BirthDay = new Date(new Date('2021/08/11'));
-          var today = new Date();
-          var timeold = (today.getTime() - BirthDay.getTime());
-          var daysold = Math.floor(timeold / (24 * 60 * 60 * 1000));
-          document.getElementById('webinfo-runtime-count').innerHTML = daysold + ' 天';
-        </script>
-      
-
-
-      
-        <div class="webinfo-item">
-          <div>本站总字数：</div>
-          <div>4.3k 字</div>
-        </div>
-      
-
-      
-        <div class="webinfo-item">
-          <div>本站访客数：</div>
-          
-          <div><span id="lc-uv"><span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span></span> 人</div>
-          
-        </div>
-      
-
-      
-        <div class="webinfo-item">
-          <div>本站总访问量：</div>
-          
-          <div><span id="lc-sv"><span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span></span> 次</div>
-          
-        </div>
-      
-
-      
-        <div class="webinfo-item">
-          <div>最后活动时间：</div>
-          
-            <div id="last-update" style="display: none;">Sat Aug 14 2021 23:36:10 GMT+0800 (中国标准时间)</div>
-            <div id="last-update-show">2021-08-14 日</div>
-          
-        </div>
-        
-        <script>
-          function timeago(dateTimeStamp) {
-              var minute = 1000 * 60; //把分，时，天，周，半个月，一个月用毫秒表示
-              var hour = minute * 60;
-              var day = hour * 24;
-              var week = day * 7;
-              var month = day * 30;
-              var now = new Date().getTime(); //获取当前时间毫秒
-              var diffValue = now - dateTimeStamp; //时间差
-              if (diffValue < 0) {
-                  return;
-              }
-              var minC = diffValue / minute; //计算时间差的分，时，天，周，月
-              var hourC = diffValue / hour;
-              var dayC = diffValue / day;
-              var weekC = diffValue / week;
-              var monthC = diffValue / month;
-              if (monthC >= 1 && monthC <= 3) {
-                  result = " " + parseInt(monthC) + " 月前"
-              } else if (weekC >= 1 && weekC <= 3) {
-                  result = " " + parseInt(weekC) + " 周前"
-              } else if (dayC >= 1 && dayC <= 6) {
-                  result = " " + parseInt(dayC) + " 天前"
-              } else if (hourC >= 1 && hourC <= 23) {
-                  result = " " + parseInt(hourC) + " 小时前"
-              } else if (minC >= 1 && minC <= 59) {
-                  result = " " + parseInt(minC) + " 分钟前"
-              } else if (diffValue >= 0 && diffValue <= minute) {
-                  result = "刚刚"
-              } else {
-                  var datetime = new Date();
-                  datetime.setTime(dateTimeStamp);
-                  var Nyear = datetime.getFullYear();
-                  var Nmonth = datetime.getMonth() + 1 < 10 ? "0" + (datetime.getMonth() + 1) : datetime.getMonth() + 1;
-                  var Ndate = datetime.getDate() < 10 ? "0" + datetime.getDate() : datetime.getDate();
-                  var Nhour = datetime.getHours() < 10 ? "0" + datetime.getHours() : datetime.getHours();
-                  var Nminute = datetime.getMinutes() < 10 ? "0" + datetime.getMinutes() : datetime.getMinutes();
-                  var Nsecond = datetime.getSeconds() < 10 ? "0" + datetime.getSeconds() : datetime.getSeconds();
-                  result = Nyear + "-" + Nmonth + "-" + Ndate
-              }
-              return result;
-          }
-          var lastUpDate = document.getElementById('last-update').innerHTML;
-          try {
-            document.getElementById('last-update-show').innerHTML = timeago(new Date(lastUpDate));
-          } catch (error) {
-            document.getElementById('last-update-show').innerHTML = '2021-08-14 日';
-          }
-        </script>
-        
-      
-    </div>
-  </div>
-</section>
-
-  
-
-  
-    
-    
-
-<section class="widget grid shadow floatable blur desktop mobile">
-  
-  <header>
-    
-      <a target="_blank" rel="noopener" href='https://github.com/volantis-x/hexo-theme-volantis'><i class="fas fa-headset fa-fw" aria-hidden="true"></i><span class='name'>联系主题项目开发者</span></a>
-    
-  </header>
-
-
-  <div class='content'>
-    <div class="grid navigation fixed">
-      
-        <a class="flat-box" title="https://github.com/volantis-x/hexo-theme-volantis/issues/" target="_blank" rel="noopener" href="https://github.com/volantis-x/hexo-theme-volantis/issues/"
-          
-          
-          id="https:githubcomvolantis-xhexo-theme-volantisissues">
-          
-            <i class="fas fa-bug fa-fw" aria-hidden="true"></i>
-          
-          反馈BUG
-        </a>
-      
-        <a class="flat-box" title="https://github.com/volantis-x/hexo-theme-volantis/issues/" target="_blank" rel="noopener" href="https://github.com/volantis-x/hexo-theme-volantis/issues/"
-          
-          
-          id="https:githubcomvolantis-xhexo-theme-volantisissues">
-          
-            <i class="fas fa-question-circle fa-fw" aria-hidden="true"></i>
-          
-          疑问求助
-        </a>
-      
-        <a class="flat-box" title="https://github.com/volantis-x/hexo-theme-volantis/issues/" target="_blank" rel="noopener" href="https://github.com/volantis-x/hexo-theme-volantis/issues/"
-          
-          
-          id="https:githubcomvolantis-xhexo-theme-volantisissues">
-          
-            <i class="fas fa-lightbulb fa-fw" aria-hidden="true"></i>
-          
-          提个建议
-        </a>
-      
-    </div>
-  </div>
-</section>
 
   
 
 
 </aside>
+
 
 
 		  
@@ -1000,21 +887,21 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 <script>
   window.pdata={}
-  pdata.ispage=false;
-  pdata.postTitle="";
+  pdata.ispage=true;
+  pdata.postTitle="Windows上再次部署Hexo博客详细过程";
   pdata.commentPath="";
   pdata.commentPlaceholder="";
   // header 这里无论是否开启pjax都需要
   var l_header=document.getElementById("l_header");
   
-  l_header.classList.remove("show");
+  l_header.classList.add("show");
   
   
     // cover
     var cover_wrapper=document.querySelector('.cover-wrapper');
     
-    cover_wrapper.id="half";
-    cover_wrapper.style.display="";
+    cover_wrapper.id="none";
+    cover_wrapper.style.display="none";
     
   
 </script>
