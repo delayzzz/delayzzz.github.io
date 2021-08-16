@@ -20,7 +20,7 @@
   <meta content="好困啊" name="apple-mobile-web-app-title">
   <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style">
   <meta content="telephone=no" name="format-detection">
-  <link rel="preload" href="/css/style.css?time=1629041359835" as="style">
+  <link rel="preload" href="/css/style.css?time=1629125480916" as="style">
   <!-- 页面元数据 -->
   <title>归档 - 好困啊</title>
   <meta name="keywords" content="delayz, zyc, blog">
@@ -72,7 +72,14 @@
 }
 @font-face {
   font-family: 'UbuntuMono';
-  src: url("https://cdn.jsdelivr.net/gh/volantis-x/cdn-fonts/UbuntuMono/UbuntuMono-Regular.ttf");
+  src: url(".\source\_font\Ma_Shan_Zheng\MaShanZheng-Regular.ttf");
+  font-weight: 'normal';
+  font-style: 'normal';
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Monaco';
+  src: url("https://cdn.jsdelivr.net/gh/volantis-x/cdn-fonts/Monaco/Monaco.ttf");
   font-weight: 'normal';
   font-style: 'normal';
   font-display: swap;
@@ -2277,8 +2284,8 @@ ul.list-v >li>a:hover {
 }
 
   </style>
-  <link rel="stylesheet" href="/css/style.css?time=1629041359835" media="print" onload="this.media='all';this.onload=null">
-  <noscript><link rel="stylesheet" href="/css/style.css?time=1629041359835"></noscript>
+  <link rel="stylesheet" href="/css/style.css?time=1629125480916" media="print" onload="this.media='all';this.onload=null">
+  <noscript><link rel="stylesheet" href="/css/style.css?time=1629125480916"></noscript>
     <script>
       var userColorScheme=localStorage.getItem("user-color-scheme")
       if(userColorScheme){
@@ -2552,11 +2559,11 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
             
             
               <li>
-                <a class="menuitem flat-box faa-parent animated-hover" href=/photos/
+                <a class="menuitem flat-box faa-parent animated-hover" href=/
                   
                   
                   
-                    id="photos"
+                    id="home"
                   >
                   <i class='fas fa-paper-plane fa-fw'></i>流年
                 </a>
@@ -2807,11 +2814,11 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
               
             
               <li>
-                <a class="menuitem flat-box faa-parent animated-hover" href=/photos/
+                <a class="menuitem flat-box faa-parent animated-hover" href=/
                   
                   
                   
-                    id="photos"
+                    id="home"
                   >
                   <i class='fas fa-paper-plane fa-fw'></i>流年
                 </a>
@@ -3218,8 +3225,8 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         <div class="webinfo-item">
           <div>最后活动时间：</div>
           
-            <div id="last-update" style="display: none;">Sun Aug 15 2021 23:29:19 GMT+0800 (中国标准时间)</div>
-            <div id="last-update-show">2021-08-15 日</div>
+            <div id="last-update" style="display: none;">Mon Aug 16 2021 22:51:20 GMT+0800 (中国标准时间)</div>
+            <div id="last-update-show">2021-08-16 日</div>
           
         </div>
         
@@ -3269,7 +3276,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           try {
             document.getElementById('last-update-show').innerHTML = timeago(new Date(lastUpDate));
           } catch (error) {
-            document.getElementById('last-update-show').innerHTML = '2021-08-15 日';
+            document.getElementById('last-update-show').innerHTML = '2021-08-16 日';
           }
         </script>
         
@@ -3424,7 +3431,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         本站使用
         <a href="https://github.com/volantis-x/hexo-theme-volantis/tree/5.0.0.alpha.0" target="_blank" class="codename">Volantis</a>
-        作为主题
+        作为主题，总访问量为
+          <span id="busuanzi_value_site_pv"><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
+          次
+        
       
     
       
@@ -3923,7 +3933,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
     
     
-    volantis.js('/js/rightMenu.js?time=1629041359835')
+    volantis.js('/js/rightMenu.js?time=1629125480916')
   </script>
 
 
@@ -4034,19 +4044,19 @@ volantis.pjax.push(bindToggleButton);
     
       const sites_api = document.getElementById('sites-api');
       if (sites_api != undefined && typeof SitesJS === 'undefined') {
-        volantis.js("/js/plugins/sites.js?time=1629041359835")
+        volantis.js("/js/plugins/sites.js?time=1629125480916")
       }
     
     
       const friends_api = document.getElementById('friends-api');
       if (friends_api != undefined && typeof FriendsJS === 'undefined') {
-        volantis.js("/js/plugins/friends.js?time=1629041359835")
+        volantis.js("/js/plugins/friends.js?time=1629125480916")
       }
     
     
       const contributors_api = document.getElementById('contributors-api');
       if (contributors_api != undefined && typeof ContributorsJS === 'undefined') {
-        volantis.js("/js/plugins/contributors.js?time=1629041359835")
+        volantis.js("/js/plugins/contributors.js?time=1629125480916")
       }
     
   };
@@ -4177,7 +4187,7 @@ volantis.pjax.push(bindToggleButton);
 
     
       // 右键 music 需要在 APlayer  MetingJS 之后加载
-      await volantis.js('/js/aplayer.js?time=1629041359838')
+      await volantis.js('/js/aplayer.js?time=1629125480918')
       volantis.APlayerController.music = true;
     
   })();
@@ -4290,9 +4300,11 @@ volantis.pjax.push(bindToggleButton);
 
 
 
+  <script defer src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js" data-pjax></script>
 
 
-<script src="/js/app.js?time=1629041359835.js"></script>
+
+<script src="/js/app.js?time=1629125480916.js"></script>
 
 
 <!-- optional -->
@@ -4305,7 +4317,7 @@ function loadSearchScript(){
   return  volantis.import.jQuery().then(()=>{
     return new Promise((resolve) => {
       // see: layout/_partial/scripts/cdnCtrl.ejs
-      volantis.js('/js/search/hexo.js?time=1629041359835').then(()=>{ // 此处依赖JQ
+      volantis.js('/js/search/hexo.js?time=1629125480916').then(()=>{ // 此处依赖JQ
         setSearchService()
         resolve()
       })
@@ -4635,7 +4647,7 @@ document.addEventListener("DOMContentLoaded", function () {
       fetch(imgs[index % imgs.length] +"?t=" + new Date().getTime());
     }
   }
-  volantis.js('/js/parallax.js?time=1629041359835').then(()=>{
+  volantis.js('/js/parallax.js?time=1629125480916').then(()=>{
     parallax()
   })
   volantis.pjax.push(next_parallax);
@@ -4651,8 +4663,8 @@ document.addEventListener("DOMContentLoaded", function () {
   <script>
   volantis.message = (title, message, icon = 'fas fa-info-circle light-blue', time = '5000', position = 'topRight', done = null) => {
     if (typeof iziToast == "undefined") {
-      volantis.css('/css/message.css?time=1629041359835')
-      volantis.js('/js/message.js?time=1629041359835', () => {
+      volantis.css('/css/message.css?time=1629125480916')
+      volantis.js('/js/message.js?time=1629125480916', () => {
         tozashMessage(title, message, icon, time, position, done);
       });
     } else {
@@ -4685,8 +4697,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
   volantis.question = (title, message, success = null, cancel = null, done = null, icon = 'fas fa-question-circle light-blue', time = '20000') => {
     if (typeof iziToast == "undefined") {
-      volantis.css('/css/message.css?time=1629041359835')
-      volantis.js('/js/message.js?time=1629041359835', () => {
+      volantis.css('/css/message.css?time=1629125480916')
+      volantis.js('/js/message.js?time=1629125480916', () => {
         tozashQuestion(title, message, icon , time, success, cancel, done);
       });
     } else {

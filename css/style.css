@@ -21,7 +21,14 @@
 }
 @font-face {
   font-family: 'UbuntuMono';
-  src: url("https://cdn.jsdelivr.net/gh/volantis-x/cdn-fonts/UbuntuMono/UbuntuMono-Regular.ttf");
+  src: url(".\source\_font\Ma_Shan_Zheng\MaShanZheng-Regular.ttf");
+  font-weight: 'normal';
+  font-style: 'normal';
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Monaco';
+  src: url("https://cdn.jsdelivr.net/gh/volantis-x/cdn-fonts/Monaco/Monaco.ttf");
   font-weight: 'normal';
   font-style: 'normal';
   font-display: swap;
@@ -5491,4 +5498,47 @@ article#post h2 {
   display: initial;
   width: auto;
   border-bottom: none;
+}
+.gallery-page {
+  margin-top: 20px;
+}
+.img-list,
+.gallery-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+}
+.img-column {
+  display: flex;
+  flex-direction: column-reverse;
+}
+.img-column a,
+.gallery-column a {
+  border-bottom: -10px;
+}
+.gallery-item {
+  margin-bottom: 0px;
+}
+.gallery-item p {
+  margin: 10px auto 5px;
+  max-width: 50%;
+  text-align: center;
+  font-size: 20px;
+  color: $black-deep;
+  background: rgba(255,255,255,0.3);
+  border-radius: 20px;
+  border: 1px solid $black-deep;
+  box-shadow: 0 8px 20px -8px rgba(0,0,0,0.3);
+}
+.posts-expand .post-body .gallery-column a img {
+  height: 250px;
+  width: 300px;
+  object-fit: cover;
+}
+@media (max-width: 500px) {
+  .gallery-item p {
+    min-width: 75px;
+    font-size: 13px;
+  }
 }
