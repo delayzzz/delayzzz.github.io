@@ -20,7 +20,7 @@
   <meta content="好困啊" name="apple-mobile-web-app-title">
   <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style">
   <meta content="telephone=no" name="format-detection">
-  <link rel="preload" href="/css/style.css?time=1629903131831" as="style">
+  <link rel="preload" href="/css/style.css?time=1629905255743" as="style">
   <!-- 页面元数据 -->
   <title>好困啊</title>
   <meta name="keywords" content="bme,wfss,delayz, zyc, blog">
@@ -31,7 +31,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2021-08-25T14:44:58.000Z">
-<meta property="article:modified_time" content="2021-08-25T14:49:33.789Z">
+<meta property="article:modified_time" content="2021-08-25T15:27:12.213Z">
 <meta property="article:author" content="delayzzz">
 <meta property="article:tag" content="bme">
 <meta property="article:tag" content="wfss">
@@ -2285,8 +2285,8 @@ ul.list-v >li>a:hover {
 }
 
   </style>
-  <link rel="stylesheet" href="/css/style.css?time=1629903131831" media="print" onload="this.media='all';this.onload=null">
-  <noscript><link rel="stylesheet" href="/css/style.css?time=1629903131831"></noscript>
+  <link rel="stylesheet" href="/css/style.css?time=1629905255743" media="print" onload="this.media='all';this.onload=null">
+  <noscript><link rel="stylesheet" href="/css/style.css?time=1629905255743"></noscript>
     <script>
       var userColorScheme=localStorage.getItem("user-color-scheme")
       if(userColorScheme){
@@ -2927,6 +2927,12 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 
   
+    <div class='headimg-div'>
+      <a class='headimg-a'>
+        <img class='headimg' src='https://raw.githubusercontent.com/delayzzz/image_source/main/blog/post/%233/image-20210825232405252.png'/>
+      </a>
+    </div>
+  
   <div class="article-meta" id="top">
     
     
@@ -2972,7 +2978,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-08-25T22:49:33+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-08-25T23:27:12+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
     <p>更新于：2021年8月25日</p>
@@ -3580,7 +3586,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
     
     
-    volantis.js('/js/rightMenu.js?time=1629903131831')
+    volantis.js('/js/rightMenu.js?time=1629905255743')
   </script>
 
 
@@ -3691,19 +3697,19 @@ volantis.pjax.push(bindToggleButton);
     
       const sites_api = document.getElementById('sites-api');
       if (sites_api != undefined && typeof SitesJS === 'undefined') {
-        volantis.js("/js/plugins/sites.js?time=1629903131831")
+        volantis.js("/js/plugins/sites.js?time=1629905255743")
       }
     
     
       const friends_api = document.getElementById('friends-api');
       if (friends_api != undefined && typeof FriendsJS === 'undefined') {
-        volantis.js("/js/plugins/friends.js?time=1629903131831")
+        volantis.js("/js/plugins/friends.js?time=1629905255743")
       }
     
     
       const contributors_api = document.getElementById('contributors-api');
       if (contributors_api != undefined && typeof ContributorsJS === 'undefined') {
-        volantis.js("/js/plugins/contributors.js?time=1629903131831")
+        volantis.js("/js/plugins/contributors.js?time=1629905255743")
       }
     
   };
@@ -3947,7 +3953,7 @@ volantis.pjax.push(bindToggleButton);
 
 
 
-<script src="/js/app.js?time=1629903131831.js"></script>
+<script src="/js/app.js?time=1629905255743.js"></script>
 
 
 <!-- optional -->
@@ -3960,7 +3966,7 @@ function loadSearchScript(){
   return  volantis.import.jQuery().then(()=>{
     return new Promise((resolve) => {
       // see: layout/_partial/scripts/cdnCtrl.ejs
-      volantis.js('/js/search/hexo.js?time=1629903131831').then(()=>{ // 此处依赖JQ
+      volantis.js('/js/search/hexo.js?time=1629905255743').then(()=>{ // 此处依赖JQ
         setSearchService()
         resolve()
       })
@@ -4290,7 +4296,7 @@ document.addEventListener("DOMContentLoaded", function () {
       fetch(imgs[index % imgs.length] +"?t=" + new Date().getTime());
     }
   }
-  volantis.js('/js/parallax.js?time=1629903131831').then(()=>{
+  volantis.js('/js/parallax.js?time=1629905255743').then(()=>{
     parallax()
   })
   volantis.pjax.push(next_parallax);
@@ -4306,8 +4312,8 @@ document.addEventListener("DOMContentLoaded", function () {
   <script>
   volantis.message = (title, message, icon = 'fas fa-info-circle light-blue', time = '5000', position = 'topRight', done = null) => {
     if (typeof iziToast == "undefined") {
-      volantis.css('/css/message.css?time=1629903131831')
-      volantis.js('/js/message.js?time=1629903131831', () => {
+      volantis.css('/css/message.css?time=1629905255743')
+      volantis.js('/js/message.js?time=1629905255743', () => {
         tozashMessage(title, message, icon, time, position, done);
       });
     } else {
@@ -4340,8 +4346,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
   volantis.question = (title, message, success = null, cancel = null, done = null, icon = 'fas fa-question-circle light-blue', time = '20000') => {
     if (typeof iziToast == "undefined") {
-      volantis.css('/css/message.css?time=1629903131831')
-      volantis.js('/js/message.js?time=1629903131831', () => {
+      volantis.css('/css/message.css?time=1629905255743')
+      volantis.js('/js/message.js?time=1629905255743', () => {
         tozashQuestion(title, message, icon , time, success, cancel, done);
       });
     } else {
@@ -4475,7 +4481,7 @@ document.addEventListener("DOMContentLoaded", function () {
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"好困啊","url":"http://delayzzz.github.io/","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"sameAs":["https://github.com/volantis-x"]},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://delayzzz.github.io/","name":"好困啊"}},{"@type":"ListItem","position":2,"item":{"@id":"http://delayzzz.github.io/categories/学习/","name":"学习"}},{"@type":"ListItem","position":2,"item":{"@id":"http://delayzzz.github.io/categories/学习/文献/","name":"文献"}},{"@type":"ListItem","position":3,"item":{"@id":"http://delayzzz.github.io/post/7a7bb3bb.html","name":""}}]},{"@context":"http://schema.org","@type":"BlogPosting","headline":"","description":"","datePublished":"2021-08-25T14:44:58.000Z","dateModified":"2021-08-25T14:49:33.789Z","inLanguage":["zh-CN","zh-TW","en","default"],"mainEntityOfPage":{"@type":"WebPage","@id":"http://delayzzz.github.io/post/7a7bb3bb.html"},"author":{"@type":"Person"},"publisher":{"@type":"Organization","name":"好困啊","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"http://delayzzz.github.io/post/7a7bb3bb.html","wordCount":0,"articleSection":"学习","keywords":"bme,wfss"}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"好困啊","url":"http://delayzzz.github.io/","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"sameAs":["https://github.com/volantis-x"]},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://delayzzz.github.io/","name":"好困啊"}},{"@type":"ListItem","position":2,"item":{"@id":"http://delayzzz.github.io/categories/学习/","name":"学习"}},{"@type":"ListItem","position":2,"item":{"@id":"http://delayzzz.github.io/categories/学习/文献/","name":"文献"}},{"@type":"ListItem","position":3,"item":{"@id":"http://delayzzz.github.io/post/7a7bb3bb.html","name":""}}]},{"@context":"http://schema.org","@type":"BlogPosting","headline":"","description":"","datePublished":"2021-08-25T14:44:58.000Z","dateModified":"2021-08-25T15:27:12.213Z","inLanguage":["zh-CN","zh-TW","en","default"],"mainEntityOfPage":{"@type":"WebPage","@id":"http://delayzzz.github.io/post/7a7bb3bb.html"},"author":{"@type":"Person"},"publisher":{"@type":"Organization","name":"好困啊","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"http://delayzzz.github.io/post/7a7bb3bb.html","wordCount":0,"articleSection":"学习","keywords":"bme,wfss","image":{"@type":"ImageObject","url":"https://raw.githubusercontent.com/delayzzz/image_source/main/blog/post/%233/image-20210825232405252.png","width":1024,"height":768}}]</script>
 
 
 <!-- more -->
