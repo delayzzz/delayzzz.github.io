@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>LabVIEW界面设计记录</title>
+      <link href="/post/c6d24f85.html"/>
+      <url>/post/c6d24f85.html</url>
+      
+        <content type="html"><![CDATA[<div class="note bug yellow"><p><strong></strong></p><p>研究生打工第一单<br>1.开发一款上位机软件以配合某省基金项目<br>2.开发环境：LabVIEW2017(VISA20.0)<br>3.启动时间：21-07-25</p></div><span id="more"></span><h3 id="21-08-02记录"><a href="#21-08-02记录" class="headerlink" title="21-08-02记录"></a>21-08-02记录</h3><hr><blockquote><p>今天把实验室电脑上的64位的office2019换成了32位版本，问题解决。并且安装新的office后LabVIEW2017中的RGT包不见了，重新安装RGT2017，安装包在网盘和电脑中均存有备份</p></blockquote><p>【踩坑】由于程序IDE为LabVIEW2017 32bit版本，故与其兼容的office版本必须为32位；关于LabVIEW中RGT工具包的版本兼容问题，详情请见<a href="https://www.ni.com/zh-cn/support/documentation/compatibility/17/report-generation-toolkit-and-microsoft-office-and-labview-compa.html">网址🔗</a></p><p>【提醒】记得该程序启动即开启串口通信，故电脑必须事先安装USB-TTL驱动</p><p><font color=red>【待解决】所有vi的前面板大小不确定，在不同规格的显示器下显示不同，需要进一步调整优化</font></p><h3 id="21-09-01记录"><a href="#21-09-01记录" class="headerlink" title="21-09-01记录"></a>21-09-01记录</h3><hr><blockquote><p>LabVIEW端和Arduino端均实现以规定协议通信，发现之前串口通信异常的问题所在；尝试了在不同vi切换时彻底关闭前一个vi进程，尝试失败、版本回退，将试验版本删除</p></blockquote><p>【踩坑】LabVIEW的串口编程，在接收协议报文时注意。之前的策略误认为接收到的一定是一帧或多帧完整的报文，并且盲目的设置调用接收函数的循环周期。其实可能由于循环周期的不同，出现只收到几个残缺的U8整型数，即不是整数帧报文的情况。所以会出现串口通信的异常。解决方案是与单片机串口接收函数一样，单个变量周期接收，并且以状态机的方式判断报文完整性，最终解包，就不会出现错收漏收的问题。</p><p>【提醒】在此补充一点，LabVIEW中调用串口函数，需要预先安装VISA（LV所需底层串口驱动程序）。先前两次都是在<a href="https://www.ni.com/zh-cn/support/downloads/drivers/download.ni-visa.html">官网🔗</a>搜索VISA，安装20.0版本。安装过程中会安装很多配套的运行引擎或环境，安装完成后打开NI MAX即可查看电脑设备中实时存在的串口状态。</p><h2 id="技术总结"><a href="#技术总结" class="headerlink" title="技术总结"></a>技术总结</h2><details cyan><summary> 1.主、从vi界面的调用和返回技巧 </summary>              <div class='content'>                            </div>            </details><details green><summary> 2.如何生成excel报表 </summary>              <div class='content'>                            </div>            </details><details cyan><summary> 3.模糊搜索路径内的文件并列出 </summary>              <div class='content'>                            </div>            </details><details green><summary> 4.各界面内主程序的框架搭建和注意事项 </summary>              <div class='content'>                            </div>            </details><details cyan><summary> 5.特定协议的串口通信设计思路 </summary>              <div class='content'>                            </div>            </details><details green><summary> 6.如何使用VISA进行资源搜索(类型强转) </summary>              <div class='content'>                            </div>            </details><details cyan><summary> 7.引用和属性节点可以用来做什么 </summary>              <div class='content'>                            </div>            </details>]]></content>
+      
+      
+      <categories>
+          
+          <category> 杂记 </category>
+          
+          <category> 学习 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> LabVIEW </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>16年Nature文章：开创性的一种柔性汗液传感器</title>
       <link href="/post/7a7bb3bb.html"/>
       <url>/post/7a7bb3bb.html</url>
